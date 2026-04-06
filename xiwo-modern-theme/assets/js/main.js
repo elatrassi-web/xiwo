@@ -106,3 +106,94 @@ function getCookie(name) {
     }
     return null;
 }
+
+document.addEventListener('DOMContentLoaded', () => {
+    // Theme Toggle Logic
+    const themeToggleBtn = document.getElementById('themeToggleBtn');
+    const iconSun = document.querySelector('.icon-sun');
+    const iconMoon = document.querySelector('.icon-moon');
+
+    // Check local storage for theme preference
+    const currentTheme = localStorage.getItem('xiwoTheme') || 'dark';
+
+    // Apply initial theme
+    if (currentTheme === 'light') {
+        document.documentElement.setAttribute('data-theme', 'light');
+        iconSun.style.display = 'block';
+        iconMoon.style.display = 'none';
+    } else {
+        document.documentElement.setAttribute('data-theme', 'dark');
+        iconSun.style.display = 'none';
+        iconMoon.style.display = 'block';
+    }
+
+    if (themeToggleBtn) {
+        themeToggleBtn.addEventListener('click', () => {
+            const current = document.documentElement.getAttribute('data-theme');
+            if (current === 'light') {
+                document.documentElement.setAttribute('data-theme', 'dark');
+                localStorage.setItem('xiwoTheme', 'dark');
+                iconSun.style.display = 'none';
+                iconMoon.style.display = 'block';
+            } else {
+                document.documentElement.setAttribute('data-theme', 'light');
+                localStorage.setItem('xiwoTheme', 'light');
+                iconSun.style.display = 'block';
+                iconMoon.style.display = 'none';
+            }
+        });
+    }
+});
+
+// Dynamic Regional Pricing Logic
+const regionalPricing = {
+    "Guadeloupe": { pocket: { current: "34€99", sub: "Pendant 3 Mois puis 44.99€/mois." }, viva: { current: "39€99", sub: "Pendant 3 Mois puis 49.99€/mois." }, maxx: { current: "44€99", sub: "Pendant 3 Mois puis 54.99€/mois." } },
+    "Martinique": { pocket: { current: "34€99", sub: "Pendant 3 Mois puis 44.99€/mois." }, viva: { current: "39€99", sub: "Pendant 3 Mois puis 49.99€/mois." }, maxx: { current: "44€99", sub: "Pendant 3 Mois puis 54.99€/mois." } },
+    "Guyane": { pocket: { current: "39€99", sub: "Pendant 3 Mois puis 49.99€/mois." }, viva: { current: "44€99", sub: "Pendant 3 Mois puis 54.99€/mois." }, maxx: { current: "49€99", sub: "Pendant 3 Mois puis 59.99€/mois." } },
+    "La Réunion": { pocket: { current: "29€99", sub: "Pendant 3 Mois puis 39.99€/mois." }, viva: { current: "34€99", sub: "Pendant 3 Mois puis 44.99€/mois." }, maxx: { current: "39€99", sub: "Pendant 3 Mois puis 49.99€/mois." } }
+};
+
+function updatePricing(zone) {
+    const prices = regionalPricing[zone] || regionalPricing["Guadeloupe"];
+
+    const pocketEl = document.getElementById('price-pocket');
+    const pocketSubEl = document.getElementById('price-sub-pocket');
+    if (pocketEl && pocketSubEl) {
+        pocketEl.innerHTML = prices.pocket.current + '<span>/mois</span>';
+        pocketSubEl.textContent = prices.pocket.sub;
+    }
+
+    const vivaEl = document.getElementById('price-viva');
+    const vivaSubEl = document.getElementById('price-sub-viva');
+    if (vivaEl && vivaSubEl) {
+        vivaEl.innerHTML = prices.viva.current + '<span>/mois</span>';
+        vivaSubEl.textContent = prices.viva.sub;
+    }
+
+    const maxxEl = document.getElementById('price-maxx');
+    const maxxSubEl = document.getElementById('price-sub-maxx');
+    if (maxxEl && maxxSubEl) {
+        maxxEl.innerHTML = prices.maxx.current + '<span>/mois</span>';
+        maxxSubEl.textContent = prices.maxx.sub;
+    }
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+    const savedZone = getCookie('xiwo_zone');
+    if (savedZone) {
+        updatePricing(savedZone);
+    }
+});
+
+// Update the click handler for zone options to trigger pricing update
+document.addEventListener('DOMContentLoaded', () => {
+    const zoneOptions = document.querySelectorAll('.zone-option');
+    if (zoneOptions) {
+        zoneOptions.forEach(option => {
+            option.addEventListener('click', function(e) {
+                const zone = this.getAttribute('data-zone');
+                updatePricing(zone);
+            });
+        });
+    }
+});
