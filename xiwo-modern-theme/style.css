@@ -64,7 +64,6 @@ body {
     background-color: var(--card-bg);
 }
 
-
 /* Typography Enhancements */
 h1, h2, h3, h4, h5, h6 {
     font-weight: 800;
@@ -212,101 +211,6 @@ a:hover {
     text-decoration: underline;
 }
 
-/* Hero Section */
-.xiwo-hero {
-    background: radial-gradient(circle at 70% 30%, var(--modal-bg) 0%, var(--bg-color) 60%);
-    padding: 14rem 2rem 8rem;
-    position: relative;
-    overflow: hidden;
-    color: var(--text-color);
-    min-height: 850px;
-    display: flex;
-    align-items: center;
-}
-
-.xiwo-hero::before {
-    content: '';
-    position: absolute;
-    top: 0; left: 0; right: 0; bottom: 0;
-    background: url('data:image/svg+xml;utf8,<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><circle cx="50" cy="50" r="40" fill="none" stroke="rgba(154,186,100,0.05)" stroke-width="0.5"/></svg>') repeat;
-    background-size: 800px 800px;
-    background-position: center right;
-    opacity: 0.5;
-    z-index: 0;
-}
-
-.xiwo-hero-inner {
-    max-width: 1400px;
-    margin: 0 auto;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    width: 100%;
-    position: relative;
-    z-index: 1;
-    gap: 2rem;
-}
-
-.xiwo-hero-content {
-    flex: 1;
-    max-width: 650px;
-    z-index: 2;
-}
-
-.hero-tag {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    background: rgba(255, 255, 255, 0.05);
-    border: 1px solid rgba(154, 186, 100, 0.3);
-    padding: 0.4rem 1rem;
-    border-radius: 50px;
-    font-size: 0.7rem;
-    font-weight: 700;
-    letter-spacing: 0.1em;
-    color: #fff;
-    margin-bottom: 2rem;
-    text-transform: uppercase;
-    box-shadow: 0 0 15px rgba(154, 186, 100, 0.1);
-}
-
-.hero-tag .dot {
-    width: 6px;
-    height: 6px;
-    background-color: var(--wp--preset--color--primary);
-    border-radius: 50%;
-    box-shadow: 0 0 8px var(--wp--preset--color--primary);
-}
-
-.xiwo-hero-content h1 {
-    font-size: 4.5rem;
-    line-height: 1.1;
-    margin-bottom: 1.5rem;
-    color: var(--text-color);
-    font-weight: 800;
-}
-
-.xiwo-hero-content h1 span {
-    color: var(--wp--preset--color--primary);
-    text-shadow: 0 0 30px rgba(154, 186, 100, 0.3);
-}
-
-.xiwo-hero-desc {
-    font-size: 1.1rem;
-    color: var(--desc-color);
-    line-height: 1.6;
-    margin-bottom: 3rem;
-    max-width: 500px;
-}
-
-.hero-stats {
-    display: flex;
-    gap: 3rem;
-    margin-bottom: 3rem;
-    border-top: 1px solid rgba(255,255,255,0.1);
-    border-bottom: 1px solid rgba(255,255,255,0.1);
-    padding: 1.5rem 0;
-}
 
 .stat-item {
     display: flex;
@@ -325,12 +229,6 @@ a:hover {
     font-size: 0.8rem;
     color: #88929b;
     text-transform: lowercase;
-}
-
-.hero-actions {
-    display: flex;
-    align-items: center;
-    gap: 2rem;
 }
 
 .btn-primary-glow {
@@ -365,14 +263,6 @@ a:hover {
 .btn-link:hover {
     color: #fff;
     border-color: #fff;
-}
-
-.xiwo-hero-image {
-    flex: 1;
-    display: flex;
-    justify-content: flex-end;
-    position: relative;
-    height: 600px;
 }
 
 /* Globe Placeholder Styles */
@@ -573,7 +463,6 @@ a:hover {
     text-align: center;
     border-top: 1px solid rgba(255,255,255,0.05);
 }
-
 
 .pricing-tabs {
     display: flex;
@@ -1023,39 +912,7 @@ a:hover {
     }
 }
 
-/* --- Mobile Responsiveness for Hero Section --- */
 @media (max-width: 992px) {
-    .xiwo-hero-inner {
-        flex-direction: column;
-        text-align: center;
-        gap: 3rem;
-    }
-
-    .xiwo-hero-content {
-        max-width: 100%;
-    }
-
-    .xiwo-hero-desc {
-        margin-left: auto;
-        margin-right: auto;
-    }
-
-    .hero-stats {
-        justify-content: center;
-    }
-
-    .hero-actions {
-        justify-content: center;
-        flex-direction: column;
-        align-items: center;
-        gap: 1.5rem;
-    }
-
-    .xiwo-hero-image {
-        justify-content: center;
-        height: 400px;
-        width: 100%;
-    }
 
     .globe-container {
         width: 100%;
@@ -1067,22 +924,8 @@ a:hover {
         transform: none;
     }
 
-    .xiwo-hero-content h1 {
-        font-size: 3rem;
-    }
 }
 
 @media (max-width: 480px) {
-    .xiwo-hero-content h1 {
-        font-size: 2.2rem;
-    }
 
-    .xiwo-hero {
-        padding: 8rem 1rem 4rem;
-    }
-
-    .hero-stats {
-        flex-direction: column;
-        gap: 1.5rem;
-    }
 }
