@@ -1,9 +1,11 @@
 document.addEventListener('DOMContentLoaded', () => {
 
     // Zone Modal Logic
-    const zoneModal = document.getElementById('regionModalOverlay');
+    const zoneModal = document.getElementById('zoneModal');
     const openZoneBtn = document.getElementById('openZoneModalBtn');
+    const closeZoneBtn = document.getElementById('closeZoneModalBtn');
     const currentZoneText = document.getElementById('currentZoneText');
+    const zoneOptions = document.querySelectorAll('.zone-option');
 
     // Check cookie
     const savedZone = getCookie('xiwo_zone');
@@ -11,31 +13,42 @@ document.addEventListener('DOMContentLoaded', () => {
         if(currentZoneText) currentZoneText.textContent = `Zone géographique : ${savedZone}`;
     } else {
         // Show modal if no zone selected yet
-        if(zoneModal) zoneModal.classList.add('active');
+        if(zoneModal) zoneModal.style.display = 'flex';
     }
 
     if (openZoneBtn) {
         openZoneBtn.addEventListener('click', (e) => {
             e.preventDefault();
-            zoneModal.classList.add('active');
+            if(zoneModal) zoneModal.style.display = 'flex';
+        });
+    }
+
+    if (closeZoneBtn) {
+        closeZoneBtn.addEventListener('click', () => {
+            if(zoneModal) zoneModal.style.display = 'none';
         });
     }
 
     // Close modal if clicked outside
     if(zoneModal) {
-        zoneModal.addEventListener('click', (e) => {
+        window.addEventListener('click', (e) => {
             if (e.target === zoneModal && savedZone) {
-                zoneModal.classList.remove('active');
+                zoneModal.style.display = 'none';
             }
         });
     }
 
-    // Expose selectZone globally
-    window.selectZone = function(zone) {
-        setCookie('xiwo_zone', zone, 365);
-        if(currentZoneText) currentZoneText.textContent = `Zone géographique : ${zone}`;
-        if(zoneModal) zoneModal.classList.remove('active');
-    };
+    if (zoneOptions) {
+        zoneOptions.forEach(option => {
+            option.addEventListener('click', function(e) {
+                e.preventDefault();
+                const zone = this.getAttribute('data-zone');
+                setCookie('xiwo_zone', zone, 365);
+                if(currentZoneText) currentZoneText.textContent = `Zone géographique : ${zone}`;
+                if(zoneModal) zoneModal.style.display = 'none';
+            });
+        });
+    }
 
     // Expose switchPricing globally
     window.switchPricing = function(type) {
