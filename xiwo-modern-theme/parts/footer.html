@@ -141,25 +141,57 @@
     <!-- /wp:group -->
 
     <!-- wp:html -->
-    <!-- Global Modal for Region Selection -->
+        <!-- Global Modal for Region Selection -->
     <div id="regionModalOverlay">
         <div class="region-modal">
             <h2>Bienvenue sur XiWO</h2>
             <p>Veuillez sélectionner votre zone géographique pour accéder aux offres correspondantes.</p>
 
-            <div class="region-grid">
-                <button class="region-btn" onclick="selectZone('Guadeloupe')">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/e/e7/Flag_of_Guadeloupe_%28local%29.svg" alt="Guadeloupe" />
-                    <span>Guadeloupe</span>
-                </button>
-                <button class="region-btn" onclick="selectZone('Martinique')">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/6/64/Snake_Flag_of_Martinique.svg" alt="Martinique" />
-                    <span>Martinique</span>
-                </button>
-                <button class="region-btn" onclick="selectZone('Guyane')">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/2/29/Flag_of_French_Guiana.svg" alt="Guyane" />
-                    <span>Guyane</span>
-                </button>
+            <div class="region-slider-container">
+                <div class="region-slider">
+                    <!-- Guadeloupe -->
+                    <button class="region-slider-card" onclick="selectZone('Guadeloupe')">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/e/e7/Flag_of_Guadeloupe_%28local%29.svg" alt="Guadeloupe" />
+                        <h3>Guadeloupe</h3>
+                        <p class="region-sub">XIATEL GUADELOUPE</p>
+                        <span class="region-badge">Fibre & Sans fil</span>
+                    </button>
+                    <!-- Martinique -->
+                    <button class="region-slider-card" onclick="selectZone('Martinique')">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/6/64/Snake_Flag_of_Martinique.svg" alt="Martinique" />
+                        <h3>Martinique</h3>
+                        <p class="region-sub">XIATEL MARTINIQUE</p>
+                        <span class="region-badge">Fibre & Sans fil</span>
+                    </button>
+                    <!-- Saint-Martin -->
+                    <button class="region-slider-card" onclick="selectZone('Saint-Martin')">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/d/d3/Flag_of_Saint-Martin_%28fictional%29.svg" alt="Saint-Martin" />
+                        <h3>Saint-Martin</h3>
+                        <p class="region-sub">XIATEL SAINT-MARTIN</p>
+                        <span class="region-badge">Fibre & Sans fil</span>
+                    </button>
+                    <!-- Guyane -->
+                    <button class="region-slider-card" onclick="selectZone('Guyane')">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/2/29/Flag_of_French_Guiana.svg" alt="Guyane" />
+                        <h3>Guyane</h3>
+                        <p class="region-sub">PROCHAINEMENT</p>
+                        <span class="region-badge">Très haut débit</span>
+                    </button>
+                    <!-- France -->
+                    <button class="region-slider-card" onclick="selectZone('Hexagone')">
+                        <img src="https://upload.wikimedia.org/wikipedia/en/c/c3/Flag_of_France.svg" alt="France" />
+                        <h3>France</h3>
+                        <p class="region-sub">MÉTROPOLITAINE</p>
+                        <span class="region-badge">Fibre</span>
+                    </button>
+                     <!-- Saint-Barthélemy -->
+                    <button class="region-slider-card" onclick="selectZone('Saint-Barthélemy')">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/d/d4/Flag_of_Saint_Barthelemy_%28local%29.svg" alt="Saint-Barthélemy" />
+                        <h3>Saint-Barthélemy</h3>
+                        <p class="region-sub">XIATEL SAINT-BARTHÉLEMY</p>
+                        <span class="region-badge">Fibre & Sans fil</span>
+                    </button>
+                </div>
             </div>
         </div>
     </div>

@@ -1,5 +1,68 @@
 document.addEventListener('DOMContentLoaded', () => {
 
+    // Theme Toggle Logic
+    const themeBtn = document.getElementById('themeToggleBtn');
+    const savedTheme = getCookie('xiwo_theme');
+
+    if (savedTheme === 'light') {
+        document.body.classList.add('light-mode');
+        if (themeBtn) themeBtn.textContent = '🌙';
+    } else {
+        if (themeBtn) themeBtn.textContent = '☀️';
+    }
+
+    if (themeBtn) {
+        themeBtn.addEventListener('click', () => {
+            document.body.classList.toggle('light-mode');
+            if (document.body.classList.contains('light-mode')) {
+                setCookie('xiwo_theme', 'light', 365);
+                themeBtn.textContent = '🌙';
+            } else {
+                setCookie('xiwo_theme', 'dark', 365);
+                themeBtn.textContent = '☀️';
+            }
+        });
+    }
+
+
+    const filterRegionCards = (zone) => {
+        // Classes mapping
+        const zoneMap = {
+            'Guadeloupe': 'gp-only',
+            'Martinique': 'mq-only',
+            'Guyane': 'gf-only',
+            'Hexagone': 'hex-only',
+            'Saint-Martin': 'sm-only',
+            'Saint-Barthélemy': 'sb-only'
+        };
+
+        const targetClass = zoneMap[zone] || 'gp-only';
+
+        // Hide all cards
+        document.querySelectorAll('.pricing-card').forEach(card => {
+            card.style.display = 'none';
+        });
+
+        // Show only the target region cards
+        document.querySelectorAll('.' + targetClass).forEach(card => {
+            card.style.display = 'flex';
+        });
+
+        const toggleContainer = document.querySelector('.pricing-toggle-container');
+        const boxTitle = document.querySelector('.box-internet-title');
+
+        if (zone === 'Martinique' || zone === 'Saint-Martin') {
+            if (toggleContainer) toggleContainer.style.display = 'none';
+            if (boxTitle) boxTitle.style.display = 'block';
+            window.switchPricing('sans-engagement'); // Force sans engagement
+        } else {
+            if (toggleContainer) toggleContainer.style.display = 'flex';
+            if (boxTitle) boxTitle.style.display = 'none';
+            window.switchPricing('engagement'); // Default to engagement for others
+        }
+    };
+
+
     // Zone Modal Logic
     const zoneModal = document.getElementById('regionModalOverlay');
     const openZoneBtn = document.getElementById('openZoneModalBtn');
@@ -9,6 +72,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const savedZone = getCookie('xiwo_zone');
     if (savedZone) {
         if(currentZoneText) currentZoneText.textContent = `Zone géographique : ${savedZone}`;
+        filterRegionCards(savedZone);
     } else {
         // Show modal if no zone selected yet
         if(zoneModal) zoneModal.classList.add('active');
@@ -34,6 +98,8 @@ document.addEventListener('DOMContentLoaded', () => {
     window.selectZone = function(zone) {
         setCookie('xiwo_zone', zone, 365);
         if(currentZoneText) currentZoneText.textContent = `Zone géographique : ${zone}`;
+        if(typeof filterRegionCards === 'function') filterRegionCards(zone);
+        else location.reload();
         if(zoneModal) zoneModal.classList.remove('active');
     };
 
