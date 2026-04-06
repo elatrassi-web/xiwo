@@ -38,14 +38,16 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const targetClass = zoneMap[zone] || 'gp-only';
 
-        // Hide all cards
+        // Hide all cards by default, using a class
         document.querySelectorAll('.pricing-card').forEach(card => {
-            card.style.display = 'none';
+            card.classList.remove('is-visible');
+            card.classList.add('is-hidden');
         });
 
         // Show only the target region cards
         document.querySelectorAll('.' + targetClass).forEach(card => {
-            card.style.display = 'flex';
+            card.classList.remove('is-hidden');
+            card.classList.add('is-visible');
         });
 
         const toggleContainer = document.querySelector('.pricing-toggle-container');

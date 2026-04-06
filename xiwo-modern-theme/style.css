@@ -1133,3 +1133,4 @@ body.light-mode .testimonial-card {
 body.light-mode .service-desc {
     color: #555;
 }
+.is-hidden { display: none !important; }
