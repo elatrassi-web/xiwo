@@ -41,20 +41,31 @@ document.addEventListener('DOMContentLoaded', () => {
     window.switchPricing = function(type) {
         const sansEngGrid = document.getElementById('pricing-sans-engagement');
         const engGrid = document.getElementById('pricing-engagement');
-        const tabs = document.querySelectorAll('.tab-btn');
+        const tabs = document.querySelectorAll('.pricing-toggle-btn');
 
         if(type === 'sans-engagement') {
-            sansEngGrid.style.display = 'grid';
-            engGrid.style.display = 'none';
-            tabs[0].classList.remove('active');
-            tabs[1].classList.add('active');
+            if(sansEngGrid) sansEngGrid.style.display = 'grid';
+            if(engGrid) engGrid.style.display = 'none';
+            if(tabs[0]) tabs[0].classList.add('active');
+            if(tabs[1]) tabs[1].classList.remove('active');
         } else {
-            sansEngGrid.style.display = 'none';
-            engGrid.style.display = 'grid';
-            tabs[0].classList.add('active');
-            tabs[1].classList.remove('active');
+            if(sansEngGrid) sansEngGrid.style.display = 'none';
+            if(engGrid) engGrid.style.display = 'grid';
+            if(tabs[0]) tabs[0].classList.remove('active');
+            if(tabs[1]) tabs[1].classList.add('active');
         }
     };
+
+    // Attach event listeners for pricing toggle
+    const btnSansEngagement = document.getElementById('btn-sans-engagement');
+    const btnEngagement = document.getElementById('btn-engagement');
+
+    if (btnSansEngagement) {
+        btnSansEngagement.addEventListener('click', () => switchPricing('sans-engagement'));
+    }
+    if (btnEngagement) {
+        btnEngagement.addEventListener('click', () => switchPricing('engagement'));
+    }
 });
 
 // Cookie helpers

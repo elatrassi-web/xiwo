@@ -2,24 +2,24 @@
 <div class="wp-block-group xiwo-header">
     <!-- wp:group {"tagName":"div","className":"xiwo-header-top","layout":{"type":"flex","flexWrap":"nowrap","justifyContent":"space-between"}} -->
     <div class="wp-block-group xiwo-header-top">
-        <!-- wp:group {"tagName":"div","className":"xiwo-logo"} -->
-        <div class="wp-block-group xiwo-logo">
-            <!-- wp:html -->
-            <a href="/"><img src="/wp-content/themes/xiwo-modern-theme/assets/images/logo.png" alt="XiWO Guadeloupe" /></a>
-            <!-- /wp:html -->
-        </div>
-        <!-- /wp:group -->
+        <!-- wp:site-logo /-->
 
-        <!-- wp:navigation {"layout":{"type":"flex","setCascadingProperties":true,"justifyContent":"center"}} /-->
+        <!-- wp:navigation {"layout":{"type":"flex","setCascadingProperties":true,"justifyContent":"center"}} -->
+        <!-- wp:navigation-link {"label":"Offres","url":"#offres"} /-->
+        <!-- wp:navigation-link {"label":"Avantages","url":"#avantages"} /-->
+        <!-- wp:navigation-link {"label":"Services","url":"#services"} /-->
+        <!-- /wp:navigation -->
 
-        <!-- wp:group {"tagName":"div","className":"xiwo-header-actions","layout":{"type":"flex","flexWrap":"nowrap"}} -->
-        <div class="wp-block-group xiwo-header-actions">
-            <!-- wp:html -->
-            <a href="#" class="btn btn-outline"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="margin-right:8px;"><path d="M12 20h9M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"></path></svg> Inscription</a>
-            <a href="#" class="btn btn-solid"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="margin-right:8px;"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg> Espace Abonné</a>
-            <!-- /wp:html -->
+        <!-- wp:buttons {"className":"xiwo-header-actions"} -->
+        <div class="wp-block-buttons xiwo-header-actions">
+            <!-- wp:button {"className":"btn-outline"} -->
+            <div class="wp-block-button btn-outline"><a class="wp-block-button__link wp-element-button" href="#">Inscription</a></div>
+            <!-- /wp:button -->
+            <!-- wp:button {"className":"btn-solid"} -->
+            <div class="wp-block-button btn-solid"><a class="wp-block-button__link wp-element-button" href="#">Espace Abonné</a></div>
+            <!-- /wp:button -->
         </div>
-        <!-- /wp:group -->
+        <!-- /wp:buttons -->
     </div>
     <!-- /wp:group -->
 </div>
