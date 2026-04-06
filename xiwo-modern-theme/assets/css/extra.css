@@ -2,7 +2,7 @@
 
 .xiwo-advantages {
     padding: 6rem 0;
-    background-color: #f8f9fa;
+    background-color: #080b0c;
     text-align: center;
 }
 
@@ -16,44 +16,48 @@
 }
 
 .advantage-item {
-    background: #fff;
+    background: #0d1215;
     padding: 3rem 2rem;
     border-radius: 20px;
-    box-shadow: 0 5px 20px rgba(0,0,0,0.03);
-    transition: transform 0.3s;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    transition: all 0.3s;
+    border: 1px solid rgba(255, 255, 255, 0.05);
 }
 
 .advantage-item:hover {
     transform: translateY(-10px);
+    border-color: var(--wp--preset--color--primary);
+    box-shadow: 0 10px 30px rgba(57, 255, 20, 0.1);
 }
 
 .advantage-icon {
     width: 64px;
     height: 64px;
     margin: 0 auto 1.5rem;
-    background: #f4f9f1;
+    background: rgba(57, 255, 20, 0.05);
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
     color: var(--wp--preset--color--primary);
+    box-shadow: 0 0 15px rgba(57, 255, 20, 0.2);
 }
 
 .advantage-item h3 {
     font-size: 1.25rem;
     margin-bottom: 1rem;
-    color: #111;
+    color: #fff;
 }
 
 .advantage-item p {
     font-size: 0.95rem;
-    color: #666;
+    color: #a0aab2;
     line-height: 1.6;
 }
 
 .xiwo-testimonials {
     padding: 6rem 0;
-    background-color: #fff;
+    background-color: #0b0b0b;
     text-align: center;
 }
 
@@ -67,12 +71,17 @@
 }
 
 .testimonial-card {
-    background: #fff;
-    border: 1px solid #eaeaea;
+    background: #0d1215;
+    border: 1px solid rgba(255,255,255,0.05);
     padding: 2.5rem;
     border-radius: 20px;
     text-align: left;
     position: relative;
+    transition: border-color 0.3s ease;
+}
+
+.testimonial-card:hover {
+    border-color: rgba(57, 255, 20, 0.3);
 }
 
 .testimonial-card::before {
@@ -81,7 +90,7 @@
     top: 1rem;
     right: 2rem;
     font-size: 6rem;
-    color: rgba(125, 187, 71, 0.1);
+    color: rgba(255, 255, 255, 0.05);
     font-family: serif;
     line-height: 1;
 }
@@ -94,7 +103,7 @@
 
 .testimonial-text {
     font-size: 1.05rem;
-    color: #444;
+    color: #a0aab2;
     line-height: 1.7;
     margin-bottom: 2rem;
     font-style: italic;
@@ -114,18 +123,19 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    color: #fff;
+    color: #080b0c;
     font-weight: bold;
     font-size: 1.2rem;
+    box-shadow: 0 0 10px rgba(57, 255, 20, 0.4);
 }
 
 .author-info h4 {
     margin: 0;
     font-size: 1rem;
-    color: #111;
+    color: #fff;
 }
 
 .author-info span {
     font-size: 0.85rem;
-    color: #888;
+    color: #a0aab2;
 }

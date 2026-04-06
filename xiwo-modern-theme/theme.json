@@ -6,22 +6,22 @@
             "palette": [
                 {
                     "slug": "base",
-                    "color": "#ffffff",
+                    "color": "#080b0c",
                     "name": "Base"
                 },
                 {
                     "slug": "contrast",
-                    "color": "#111111",
+                    "color": "#ffffff",
                     "name": "Contrast"
                 },
                 {
                     "slug": "primary",
-                    "color": "#7dbb47",
+                    "color": "#39ff14",
                     "name": "XiWO Green"
                 },
                 {
                     "slug": "secondary",
-                    "color": "#f8f9fa",
+                    "color": "#1a1e20",
                     "name": "Light Gray"
                 }
             ]

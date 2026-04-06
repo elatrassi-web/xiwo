@@ -1,4 +1,6 @@
-<div class="xiwo-footer">
+<!-- wp:group {"tagName":"div","className":"xiwo-footer","layout":{"type":"constrained"}} -->
+<div class="wp-block-group xiwo-footer">
+    <!-- wp:html -->
     <div class="footer-top">
         <div class="footer-contact">
             <h3 class="footer-title">Besoin d'aide ou d'informations ?</h3>
@@ -70,27 +72,29 @@
         <p>*4G/4G+ : Accessible avec équipement compatible uniquement dans les zones déployées. Couverture sur mobile.xiwo.fr et 4G+ accessible dans les villes signalées. Débits maximum théoriques de connexion : jusqu'à 655 Mbits/s en réception et jusqu'à 75 Mbits/s en émission en zone de couvertures.</p>
         <p>*Débit WEDSL (Wireless Ethernet Digital Subcriber Line) Variable en fonction du (NRA : Noeud de Raccordement Abonné), que dépend votre logement. WEDSL: Débit descendant atteignable en général entre 1 Mbit/s et 30 Mbit/s. Débit montant atteignable en général inférieur à 3 Mbit/s.</p>
     </div>
-</div>
 
-<!-- Global Modal for Region Selection -->
-<div id="regionModalOverlay">
-    <div class="region-modal">
-        <h2>Bienvenue sur XiWO</h2>
-        <p>Veuillez sélectionner votre zone géographique pour accéder aux offres correspondantes.</p>
+    <!-- Global Modal for Region Selection -->
+    <div id="regionModalOverlay">
+        <div class="region-modal">
+            <h2>Bienvenue sur XiWO</h2>
+            <p>Veuillez sélectionner votre zone géographique pour accéder aux offres correspondantes.</p>
 
-        <div class="region-grid">
-            <button class="region-btn" onclick="selectZone('Guadeloupe')">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/e/e7/Flag_of_Guadeloupe_%28local%29.svg" alt="Guadeloupe" />
-                <span>Guadeloupe</span>
-            </button>
-            <button class="region-btn" onclick="selectZone('Martinique')">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/6/64/Snake_Flag_of_Martinique.svg" alt="Martinique" />
-                <span>Martinique</span>
-            </button>
-            <button class="region-btn" onclick="selectZone('Guyane')">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/2/29/Flag_of_French_Guiana.svg" alt="Guyane" />
-                <span>Guyane</span>
-            </button>
+            <div class="region-grid">
+                <button class="region-btn" onclick="selectZone('Guadeloupe')">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/e/e7/Flag_of_Guadeloupe_%28local%29.svg" alt="Guadeloupe" />
+                    <span>Guadeloupe</span>
+                </button>
+                <button class="region-btn" onclick="selectZone('Martinique')">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/6/64/Snake_Flag_of_Martinique.svg" alt="Martinique" />
+                    <span>Martinique</span>
+                </button>
+                <button class="region-btn" onclick="selectZone('Guyane')">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/2/29/Flag_of_French_Guiana.svg" alt="Guyane" />
+                    <span>Guyane</span>
+                </button>
+            </div>
         </div>
     </div>
+    <!-- /wp:html -->
 </div>
+<!-- /wp:group -->
