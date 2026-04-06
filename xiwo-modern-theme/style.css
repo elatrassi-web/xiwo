@@ -350,13 +350,56 @@ a:hover {
     font-weight: 800;
 }
 
-.territory-grid {
-    display: flex;
-    justify-content: center;
-    gap: 1.5rem;
-    flex-wrap: wrap;
+.territory-slider-wrapper {
+    position: relative;
     max-width: 1200px;
     margin: 0 auto;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.slider-btn {
+    background: #0d1215;
+    border: 1px solid rgba(57,255,20,0.3);
+    border-radius: 50%;
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    color: var(--wp--preset--color--primary);
+    transition: all 0.3s;
+    box-shadow: 0 0 10px rgba(57, 255, 20, 0.1);
+    flex-shrink: 0;
+}
+
+.slider-btn:hover {
+    background: var(--wp--preset--color--primary);
+    color: #000;
+    box-shadow: 0 0 20px rgba(57, 255, 20, 0.4);
+}
+
+.slider-btn svg {
+    width: 24px;
+    height: 24px;
+}
+
+.territory-grid {
+    display: flex;
+    gap: 1.5rem;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    scroll-snap-type: x mandatory;
+    padding: 1rem 0;
+    flex: 1;
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
+}
+
+.territory-grid::-webkit-scrollbar {
+    display: none; /* Chrome, Safari and Opera */
 }
 
 .territory-card {
@@ -364,7 +407,10 @@ a:hover {
     border: 1px solid rgba(255,255,255,0.05);
     border-radius: 16px;
     padding: 2.5rem 1.5rem;
-    width: 200px;
+    min-width: 220px;
+    max-width: 250px;
+    flex: 0 0 auto;
+    scroll-snap-align: start;
     display: flex;
     flex-direction: column;
     align-items: center;

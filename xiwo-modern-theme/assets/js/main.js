@@ -55,6 +55,21 @@ document.addEventListener('DOMContentLoaded', () => {
             tabs[1].classList.remove('active');
         }
     };
+
+    // Territory Slider Logic
+    const slider = document.getElementById('territory-slider');
+    const prevBtn = document.getElementById('territory-prev');
+    const nextBtn = document.getElementById('territory-next');
+
+    if (slider && prevBtn && nextBtn) {
+        prevBtn.addEventListener('click', () => {
+            slider.scrollBy({ left: -300, behavior: 'smooth' });
+        });
+
+        nextBtn.addEventListener('click', () => {
+            slider.scrollBy({ left: 300, behavior: 'smooth' });
+        });
+    }
 });
 
 // Cookie helpers
