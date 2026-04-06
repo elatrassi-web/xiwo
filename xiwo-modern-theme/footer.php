@@ -1,7 +1,7 @@
-<!-- wp:group {"tagName":"div","className":"xiwo-footer","layout":{"type":"constrained"}} -->
+
+<footer class="xiwo-footer">
 <div class="wp-block-group xiwo-footer">
-    <!-- wp:html -->
-    <div class="footer-top">
+        <div class="footer-top">
         <div class="footer-contact">
             <h3 class="footer-title">Besoin d'aide ou d'informations ?</h3>
             <div class="footer-contact-item">
@@ -73,6 +73,9 @@
         <p>*Débit WEDSL (Wireless Ethernet Digital Subcriber Line) Variable en fonction du (NRA : Noeud de Raccordement Abonné), que dépend votre logement. WEDSL: Débit descendant atteignable en général entre 1 Mbit/s et 30 Mbit/s. Débit montant atteignable en général inférieur à 3 Mbit/s.</p>
     </div>
 
-    <!-- /wp:html -->
-</div>
-<!-- /wp:group -->
+    </div>
+
+</footer>
+<?php wp_footer(); ?>
+</body>
+</html>

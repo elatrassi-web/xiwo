@@ -29,10 +29,11 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Close modal if clicked outside
+    // Close modal if clicked outside (only if a zone is saved)
     if(zoneModal) {
         window.addEventListener('click', (e) => {
-            if (e.target === zoneModal && savedZone) {
+            const currentSavedZone = getCookie('xiwo_zone');
+            if (e.target === zoneModal && currentSavedZone) {
                 zoneModal.style.display = 'none';
             }
         });

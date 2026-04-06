@@ -1,7 +1,7 @@
-<!-- wp:template-part {"slug":"header","tagName":"header"} /-->
+<?php get_header(); ?>
 
-<!-- wp:group {"tagName":"main","layout":{"type":"constrained"}} -->
-<main class="wp-block-group">
+<main class="xiwo-main-content">
+
     <!-- Territories Section (New Design) -->
     <section class="xiwo-territories" id="reseau">
         <div class="section-subtitle">NOS TERRITOIRES</div>
@@ -272,11 +272,9 @@
             </div>
         </div>
     </section>
-        <!-- /wp:html -->
-    </div>
-    <!-- /wp:group -->
+            </div>
+
 
 </main>
-<!-- /wp:group -->
 
-<!-- wp:template-part {"slug":"footer","tagName":"footer"} /-->
+<?php get_footer(); ?>

@@ -1,32 +1,46 @@
-<!-- wp:group {"tagName":"div","className":"xiwo-header","layout":{"type":"constrained"}} -->
+<!DOCTYPE html>
+<html <?php language_attributes(); ?>>
+<head>
+    <meta charset="<?php bloginfo('charset'); ?>">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <?php wp_head(); ?>
+</head>
+<body <?php body_class(); ?>>
+<?php wp_body_open(); ?>
+
+<header class="xiwo-header">
 <div class="wp-block-group xiwo-header">
-    <!-- wp:group {"tagName":"div","className":"xiwo-header-top","layout":{"type":"flex","flexWrap":"nowrap","justifyContent":"space-between"}} -->
-    <div class="wp-block-group xiwo-header-top">
-        <!-- wp:site-logo {"width":120} /-->
+        <div class="wp-block-group xiwo-header-top">
+        <div class="xiwo-logo">
+            <?php if (has_custom_logo()) {
+                the_custom_logo();
+            } else { ?>
+                <a href="<?php echo esc_url(home_url('/')); ?>"><img src="<?php echo get_template_directory_uri(); ?>/assets/images/logo.png" alt="<?php bloginfo('name'); ?>" style="max-width:120px;"></a>
+            <?php } ?>
+        </div>
 
-        <!-- wp:navigation {"layout":{"type":"flex","setCascadingProperties":true,"justifyContent":"center"}} /-->
+        <nav class="xiwo-main-nav">
+            <?php wp_nav_menu(array(
+                'theme_location' => 'primary',
+                'container' => false,
+                'menu_class' => 'nav-list'
+            )); ?>
+        </nav>
 
-        <!-- wp:group {"tagName":"div","className":"xiwo-header-actions","layout":{"type":"flex","flexWrap":"nowrap"}} -->
         <div class="wp-block-group xiwo-header-actions">
-            <!-- wp:html -->
-            <button id="themeToggleBtn" class="theme-toggle-btn" aria-label="Toggle Dark/Light Mode">
+                        <button id="themeToggleBtn" class="theme-toggle-btn" aria-label="Toggle Dark/Light Mode">
                 <svg class="icon-sun" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:none;"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
                 <svg class="icon-moon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
             </button>
             <a href="#" class="btn btn-outline"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="margin-right:8px;"><path d="M12 20h9M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"></path></svg> Inscription</a>
             <a href="#" class="btn btn-solid"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="margin-right:8px;"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg> Espace Abonné</a>
-            <!-- /wp:html -->
-        </div>
-        <!-- /wp:group -->
+                    </div>
+            </div>
     </div>
-    <!-- /wp:group -->
-</div>
-<!-- /wp:group -->
 
-<!-- wp:html -->
 <div id="zoneModal" class="xiwo-modal" style="display: none;">
     <div class="xiwo-modal-content">
-        <span class="close-modal" id="closeZoneModalBtn">&times;</span>
+        <span class="close-modal" id="closeZoneModalBtn" style="display:none;">&times;</span>
         <h2>Choisissez votre région</h2>
         <div class="zone-grid">
             <a href="#" class="zone-option" data-zone="Guadeloupe">
@@ -48,20 +62,15 @@
         </div>
     </div>
 </div>
-<!-- /wp:html -->
 
-<!-- wp:group {"tagName":"div","className":"xiwo-zone-bar","layout":{"type":"constrained"}} -->
 <div class="wp-block-group xiwo-zone-bar">
-    <!-- wp:group {"tagName":"div","className":"xiwo-zone-inner","layout":{"type":"flex","flexWrap":"nowrap","justifyContent":"space-between"}} -->
-    <div class="wp-block-group xiwo-zone-inner">
-        <!-- wp:html -->
-        <span id="currentZoneText">Zone géographique : Guadeloupe</span>
+        <div class="wp-block-group xiwo-zone-inner">
+                <span id="currentZoneText">Zone géographique : Guadeloupe</span>
         <button class="change-zone-btn" id="openZoneModalBtn">
             Changer de zone
             <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M7 10l5 5 5-5z"/></svg>
         </button>
-        <!-- /wp:html -->
+            </div>
     </div>
-    <!-- /wp:group -->
-</div>
-<!-- /wp:group -->
+
+</header>
