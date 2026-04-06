@@ -1,0 +1,297 @@
+/*
+Theme Name: Xiwo Modern
+Theme URI: https://www.xiwo.fr/
+Author: Jules
+Author URI:
+Description: A modern, professional Full Site Editing (FSE) block theme for Xiwo, featuring a dark mode design and extraordinary aesthetics.
+Version: 1.0.0
+Requires at least: 6.0
+Tested up to: 6.4
+Requires PHP: 7.4
+Tags: custom-background, custom-colors, custom-logo, custom-menu, full-site-editing, block-theme, dark
+Text Domain: xiwo-modern
+*/
+
+/* --------------------------------------------------------------------------
+   Global Resets & Overrides for FSE
+   -------------------------------------------------------------------------- */
+body {
+    background-color: var(--wp--preset--color--base);
+    color: var(--wp--preset--color--contrast);
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden; /* Prevent horizontal scroll on globe effects */
+}
+
+a {
+    transition: color 0.3s ease;
+}
+
+/* --------------------------------------------------------------------------
+   Hero Section Animations
+   -------------------------------------------------------------------------- */
+.xiwo-hero-section {
+    position: relative;
+    overflow: hidden;
+}
+
+/* Add a subtle green glow to the hero background */
+.xiwo-hero-section::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle at center, rgba(20,223,27,0.05) 0%, rgba(7,12,12,0) 60%);
+    z-index: 0;
+    pointer-events: none;
+}
+
+.xiwo-hero-section > * {
+    position: relative;
+    z-index: 1;
+}
+
+/* --------------------------------------------------------------------------
+   Territory Cards
+   -------------------------------------------------------------------------- */
+.xiwo-territory-cards .wp-block-column {
+    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+}
+
+.xiwo-territory-cards .wp-block-column:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(20, 223, 27, 0.1);
+    border-color: var(--wp--preset--color--primary);
+}
+
+
+/* --------------------------------------------------------------------------
+   Tabs System Custom CSS
+   -------------------------------------------------------------------------- */
+.xiwo-tabs-container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.xiwo-tabs-nav {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-bottom: 3rem;
+}
+
+.xiwo-tab-btn {
+    background: transparent;
+    border: 1px solid #333;
+    color: #fff;
+    padding: 0.75rem 2rem;
+    border-radius: 30px;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.xiwo-tab-btn:hover {
+    border-color: var(--wp--preset--color--primary);
+    color: var(--wp--preset--color--primary);
+}
+
+.xiwo-tab-btn.active {
+    background: var(--wp--preset--color--primary);
+    border-color: var(--wp--preset--color--primary);
+    color: var(--wp--preset--color--base);
+}
+
+.xiwo-tab-pane {
+    display: none;
+    animation: fadeIn 0.5s ease;
+}
+
+.xiwo-tab-pane.active {
+    display: block;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* --------------------------------------------------------------------------
+   Carousel & Pricing Cards Custom CSS
+   -------------------------------------------------------------------------- */
+.xiwo-carousel {
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+    padding-bottom: 2rem; /* space for scrollbar */
+}
+
+/* Hide scrollbar for cleaner look, optional */
+.xiwo-carousel::-webkit-scrollbar {
+    height: 8px;
+}
+.xiwo-carousel::-webkit-scrollbar-track {
+    background: #111;
+    border-radius: 4px;
+}
+.xiwo-carousel::-webkit-scrollbar-thumb {
+    background: #333;
+    border-radius: 4px;
+}
+
+.xiwo-carousel-inner {
+    display: flex;
+    gap: 2rem;
+    width: max-content;
+    padding: 1rem;
+}
+
+.xiwo-pricing-card {
+    background: #0d1414;
+    border: 1px solid #222;
+    border-radius: 20px;
+    padding: 2.5rem 2rem;
+    min-width: 300px;
+    scroll-snap-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    transition: transform 0.3s ease;
+}
+
+.xiwo-pricing-card:hover {
+    transform: translateY(-5px);
+}
+
+.xiwo-pricing-card.featured {
+    border-color: var(--wp--preset--color--primary);
+    box-shadow: 0 0 20px rgba(20, 223, 27, 0.1);
+    transform: scale(1.05);
+}
+
+.xiwo-pricing-card.featured:hover {
+    transform: scale(1.05) translateY(-5px);
+}
+
+.xiwo-pricing-card h3 {
+    margin-top: 0;
+    font-size: 1.5rem;
+    color: #fff;
+}
+
+.xiwo-pricing-card .price {
+    font-size: 3rem;
+    font-weight: 700;
+    color: var(--wp--preset--color--primary);
+    margin: 1rem 0;
+}
+
+.xiwo-pricing-card .price span {
+    font-size: 1rem;
+    color: #888;
+    font-weight: normal;
+}
+
+.xiwo-pricing-card ul {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 2rem 0;
+    text-align: center;
+    color: #ccc;
+    flex-grow: 1;
+}
+
+.xiwo-pricing-card ul li {
+    margin-bottom: 0.5rem;
+}
+
+.xiwo-pricing-card .btn-primary {
+    background: var(--wp--preset--color--primary);
+    color: var(--wp--preset--color--base);
+    border: none;
+    padding: 0.75rem 2rem;
+    border-radius: 30px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: opacity 0.3s ease;
+    width: 100%;
+}
+
+.xiwo-pricing-card .btn-primary:hover {
+    opacity: 0.9;
+}
+
+
+/* --------------------------------------------------------------------------
+   Region Popup Custom CSS
+   -------------------------------------------------------------------------- */
+.xiwo-popup-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.85);
+    backdrop-filter: blur(10px);
+    z-index: 9999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.xiwo-popup-content {
+    background: var(--wp--preset--color--base);
+    border: 1px solid var(--wp--preset--color--primary);
+    padding: 3rem;
+    border-radius: 20px;
+    max-width: 600px;
+    width: 90%;
+    text-align: center;
+    box-shadow: 0 0 40px rgba(20, 223, 27, 0.15);
+    animation: scaleIn 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+@keyframes scaleIn {
+    from { transform: scale(0.9); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+}
+
+.xiwo-popup-content h2 {
+    margin-top: 0;
+    color: #fff;
+}
+
+.xiwo-popup-content p {
+    color: #aaa;
+    margin-bottom: 2rem;
+}
+
+.xiwo-region-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    justify-content: center;
+}
+
+.xiwo-region-btn {
+    background: #111;
+    color: #fff;
+    border: 1px solid #333;
+    padding: 0.75rem 1.5rem;
+    border-radius: 10px;
+    text-decoration: none;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.xiwo-region-btn:hover {
+    background: var(--wp--preset--color--primary);
+    color: var(--wp--preset--color--base);
+    border-color: var(--wp--preset--color--primary);
+}
