@@ -1,0 +1,131 @@
+/* Avantages & Testimonials Specific Styles */
+
+.xiwo-advantages {
+    padding: 6rem 0;
+    background-color: #f8f9fa;
+    text-align: center;
+}
+
+.advantages-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 3rem;
+    max-width: 1200px;
+    margin: 4rem auto 0;
+    padding: 0 1rem;
+}
+
+.advantage-item {
+    background: #fff;
+    padding: 3rem 2rem;
+    border-radius: 20px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.03);
+    transition: transform 0.3s;
+}
+
+.advantage-item:hover {
+    transform: translateY(-10px);
+}
+
+.advantage-icon {
+    width: 64px;
+    height: 64px;
+    margin: 0 auto 1.5rem;
+    background: #f4f9f1;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--wp--preset--color--primary);
+}
+
+.advantage-item h3 {
+    font-size: 1.25rem;
+    margin-bottom: 1rem;
+    color: #111;
+}
+
+.advantage-item p {
+    font-size: 0.95rem;
+    color: #666;
+    line-height: 1.6;
+}
+
+.xiwo-testimonials {
+    padding: 6rem 0;
+    background-color: #fff;
+    text-align: center;
+}
+
+.testimonials-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    max-width: 1200px;
+    margin: 4rem auto 0;
+    padding: 0 1rem;
+}
+
+.testimonial-card {
+    background: #fff;
+    border: 1px solid #eaeaea;
+    padding: 2.5rem;
+    border-radius: 20px;
+    text-align: left;
+    position: relative;
+}
+
+.testimonial-card::before {
+    content: '"';
+    position: absolute;
+    top: 1rem;
+    right: 2rem;
+    font-size: 6rem;
+    color: rgba(125, 187, 71, 0.1);
+    font-family: serif;
+    line-height: 1;
+}
+
+.stars {
+    color: #FFD700;
+    margin-bottom: 1rem;
+    font-size: 1.2rem;
+}
+
+.testimonial-text {
+    font-size: 1.05rem;
+    color: #444;
+    line-height: 1.7;
+    margin-bottom: 2rem;
+    font-style: italic;
+}
+
+.testimonial-author {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.author-avatar {
+    width: 50px;
+    height: 50px;
+    background: var(--wp--preset--color--primary);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    font-weight: bold;
+    font-size: 1.2rem;
+}
+
+.author-info h4 {
+    margin: 0;
+    font-size: 1rem;
+    color: #111;
+}
+
+.author-info span {
+    font-size: 0.85rem;
+    color: #888;
+}

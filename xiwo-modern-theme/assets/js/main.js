@@ -1,100 +1,80 @@
 document.addEventListener('DOMContentLoaded', () => {
 
-    // --- 1. Region Popup Logic ---
-    const popup = document.getElementById('xiwo-region-popup');
-    const regionButtons = document.querySelectorAll('.xiwo-region-btn');
+    // Zone Modal Logic
+    const zoneModal = document.getElementById('regionModalOverlay');
+    const openZoneBtn = document.getElementById('openZoneModalBtn');
+    const currentZoneText = document.getElementById('currentZoneText');
 
-    // Simple cookie getter
-    function getCookie(name) {
-        let matches = document.cookie.match(new RegExp(
-            "(?:^|; )" + name.replace(/([\.$?*|{}\(\)\[\]\\\/\+^])/g, '\\$1') + "=([^;]*)"
-        ));
-        return matches ? decodeURIComponent(matches[1]) : undefined;
+    // Check cookie
+    const savedZone = getCookie('xiwo_zone');
+    if (savedZone) {
+        if(currentZoneText) currentZoneText.textContent = `Zone géographique : ${savedZone}`;
+    } else {
+        // Show modal if no zone selected yet
+        if(zoneModal) zoneModal.classList.add('active');
     }
 
-    // Simple cookie setter
-    function setCookie(name, value, days) {
-        let expires = "";
-        if (days) {
-            let date = new Date();
-            date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
-            expires = "; expires=" + date.toUTCString();
-        }
-        document.cookie = name + "=" + (value || "")  + expires + "; path=/";
-    }
-
-    // Check if region is set
-    if (!getCookie('xiwo_user_region')) {
-        // Show popup
-        if(popup) {
-            popup.style.display = 'flex';
-        }
-    }
-
-    // Handle region selection
-    regionButtons.forEach(btn => {
-        btn.addEventListener('click', (e) => {
-            const region = e.target.getAttribute('data-region');
-            setCookie('xiwo_user_region', region, 30); // Save for 30 days
-
-            if(popup) {
-                popup.style.display = 'none';
-            }
-            // For a real setup, we might preventDefault and do an AJAX reload or redirect
-            // e.preventDefault();
-            // window.location.href = `/?region=${region}`;
-        });
-    });
-
-
-    // --- 2. Tabs Logic ---
-    const tabBtns = document.querySelectorAll('.xiwo-tab-btn');
-    const tabPanes = document.querySelectorAll('.xiwo-tab-pane');
-
-    tabBtns.forEach(btn => {
-        btn.addEventListener('click', () => {
-            // Remove active class from all buttons and panes
-            tabBtns.forEach(b => b.classList.remove('active'));
-            tabPanes.forEach(p => p.classList.remove('active'));
-
-            // Add active class to clicked button
-            btn.classList.add('active');
-
-            // Show corresponding pane
-            const targetId = btn.getAttribute('data-target');
-            document.getElementById(targetId).classList.add('active');
-        });
-    });
-
-
-    // --- 3. Simple Carousel Logic (Optional Enhancement) ---
-    // The CSS scroll-snap handles the core carousel, but we can add drag-to-scroll if needed
-    const carousels = document.querySelectorAll('.xiwo-carousel');
-    let isDown = false;
-    let startX;
-    let scrollLeft;
-
-    carousels.forEach(carousel => {
-        carousel.addEventListener('mousedown', (e) => {
-            isDown = true;
-            carousel.classList.add('active');
-            startX = e.pageX - carousel.offsetLeft;
-            scrollLeft = carousel.scrollLeft;
-        });
-        carousel.addEventListener('mouseleave', () => {
-            isDown = false;
-            carousel.classList.remove('active');
-        });
-        carousel.addEventListener('mouseup', () => {
-            isDown = false;
-            carousel.classList.remove('active');
-        });
-        carousel.addEventListener('mousemove', (e) => {
-            if (!isDown) return;
+    if (openZoneBtn) {
+        openZoneBtn.addEventListener('click', (e) => {
             e.preventDefault();
-            const x = e.pageX - carousel.offsetLeft;
-            const walk = (x - startX) * 2; // scroll-fast
-            carousel.scrollLeft = scrollLeft - walk;
+            zoneModal.classList.add('active');
         });
-    });
+    }
+
+    // Close modal if clicked outside
+    if(zoneModal) {
+        zoneModal.addEventListener('click', (e) => {
+            if (e.target === zoneModal && savedZone) {
+                zoneModal.classList.remove('active');
+            }
+        });
+    }
+
+    // Expose selectZone globally
+    window.selectZone = function(zone) {
+        setCookie('xiwo_zone', zone, 365);
+        if(currentZoneText) currentZoneText.textContent = `Zone géographique : ${zone}`;
+        if(zoneModal) zoneModal.classList.remove('active');
+    };
+
+    // Expose switchPricing globally
+    window.switchPricing = function(type) {
+        const sansEngGrid = document.getElementById('pricing-sans-engagement');
+        const engGrid = document.getElementById('pricing-engagement');
+        const tabs = document.querySelectorAll('.tab-btn');
+
+        if(type === 'sans-engagement') {
+            sansEngGrid.style.display = 'grid';
+            engGrid.style.display = 'none';
+            tabs[0].classList.remove('active');
+            tabs[1].classList.add('active');
+        } else {
+            sansEngGrid.style.display = 'none';
+            engGrid.style.display = 'grid';
+            tabs[0].classList.add('active');
+            tabs[1].classList.remove('active');
+        }
+    };
 });
+
+// Cookie helpers
+function setCookie(name, value, days) {
+    let expires = "";
+    if (days) {
+        let date = new Date();
+        date.setTime(date.getTime() + (days*24*60*60*1000));
+        expires = "; expires=" + date.toUTCString();
+    }
+    document.cookie = name + "=" + (value || "")  + expires + "; path=/";
+}
+
+function getCookie(name) {
+    let nameEQ = name + "=";
+    let ca = document.cookie.split(';');
+    for(let i=0;i < ca.length;i++) {
+        let c = ca[i];
+        while (c.charAt(0)==' ') c = c.substring(1,c.length);
+        if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length,c.length);
+    }
+    return null;
+}

@@ -1,6 +1,28 @@
-<!-- wp:group {"align":"full","layout":{"type":"flex","flexWrap":"nowrap","justifyContent":"space-between"},"style":{"spacing":{"padding":{"top":"1rem","bottom":"1rem","left":"var(--wp--preset--spacing--20, 1.5rem)","right":"var(--wp--preset--spacing--20, 1.5rem)"}}}} -->
-<div class="wp-block-group alignfull" style="padding-top:1rem;padding-right:var(--wp--preset--spacing--20, 1.5rem);padding-bottom:1rem;padding-left:var(--wp--preset--spacing--20, 1.5rem)">
-    <!-- wp:site-logo {"width":120} /-->
-    <!-- wp:navigation {"layout":{"type":"flex","setCascadingProperties":true,"justifyContent":"right"}} /-->
+<div class="xiwo-header">
+    <div class="xiwo-header-top">
+        <div class="xiwo-logo">
+            <a href="/"><img src="assets/images/logo.png" alt="XiWO Guadeloupe" /></a>
+        </div>
+        <nav class="xiwo-nav">
+            <ul>
+                <li><a href="#">Internet & Fixe <svg width="10" height="10" viewBox="0 0 24 24"><path d="M7 10l5 5 5-5z"/></svg></a></li>
+                <li><a href="#">Nos points de vente</a></li>
+                <li><a href="#">Business</a></li>
+                <li><a href="#">Assistance</a></li>
+            </ul>
+        </nav>
+        <div class="xiwo-header-actions">
+            <a href="#" class="btn btn-outline"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="margin-right:8px;"><path d="M12 20h9M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"></path></svg> Inscription</a>
+            <a href="#" class="btn btn-solid"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="margin-right:8px;"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg> Espace Abonné</a>
+        </div>
+    </div>
 </div>
-<!-- /wp:group -->
+<div class="xiwo-zone-bar">
+    <div class="xiwo-zone-inner">
+        <span id="currentZoneText">Zone géographique : Guadeloupe</span>
+        <button class="change-zone-btn" id="openZoneModalBtn">
+            Changer de zone
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M7 10l5 5 5-5z"/></svg>
+        </button>
+    </div>
+</div>
