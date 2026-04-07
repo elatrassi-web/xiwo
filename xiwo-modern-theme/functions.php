@@ -5,10 +5,10 @@ function xiwo_modern_enqueue_scripts() {
     wp_enqueue_script('swiper-js', 'https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js', array(), '11.0.0', true);
 
     // Three.js (Required by Globe.gl and Vanta.js)
-    wp_enqueue_script('three-js', 'https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js', array(), '134', true);
+    wp_enqueue_script('three-js', 'https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js', array(), '128', true);
 
     // Globe.gl
-    wp_enqueue_script('globe-gl', 'https://unpkg.com/globe.gl', array('three-js'), '2.32.0', true);
+    wp_enqueue_script('globe-gl', 'https://unpkg.com/globe.gl@2.32.0', array('three-js'), '2.32.0', true);
 
     // Vanta.js (NET effect)
     wp_enqueue_script('vanta-net', 'https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.net.min.js', array('three-js'), 'latest', true);

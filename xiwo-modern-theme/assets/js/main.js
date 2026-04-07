@@ -249,13 +249,12 @@ document.addEventListener('DOMContentLoaded', () => {
     const globeContainer = document.getElementById('globe-container');
     if (globeContainer && typeof Globe !== 'undefined') {
         // Define coordinates
-        const france = { lat: 46.2276, lng: 2.2137, name: 'France' };
+        const france = { lat: 46.2276, lng: 2.2137, name: 'FRANCE Métropolitaine', color: '#00ff00', type: 'origin' };
         const territories = [
-            { lat: 16.2650, lng: -61.5510, name: 'Guadeloupe' },
-            { lat: 14.6415, lng: -61.0242, name: 'Martinique' },
-            { lat: 3.9339, lng: -53.1258, name: 'Guyane' },
-            { lat: -21.1151, lng: 55.5364, name: 'La Réunion' },
-            { lat: 18.0708, lng: -63.0501, name: 'Saint-Martin' }
+            { lat: 16.2650, lng: -61.5510, name: 'Guadeloupe 🇫🇷', color: '#00ff00', type: 'destination' },
+            { lat: 14.6415, lng: -61.0242, name: 'Martinique 🇫🇷', color: '#00ff00', type: 'destination' },
+            { lat: 18.0708, lng: -63.0501, name: 'Saint-Martin 🇫🇷', color: '#00ff00', type: 'destination' },
+            { lat: 3.9339, lng: -53.1258, name: 'Guyane 🇬🇫', color: '#00ff00', type: 'destination' } // Using general flag or text
         ];
 
         const arcsData = territories.map(t => ({
@@ -263,28 +262,50 @@ document.addEventListener('DOMContentLoaded', () => {
             startLng: france.lng,
             endLat: t.lat,
             endLng: t.lng,
-            color: ['rgba(255, 255, 255, 0.2)', '#8bc34a']
+            color: ['rgba(0, 255, 0, 0.1)', '#00ff00']
         }));
 
         const pointsData = [france, ...territories];
 
+        // Custom Hexagon Marker for France
+        const createHexagonMarker = (color) => {
+            if (typeof THREE === 'undefined') return null;
+            const geometry = new THREE.CylinderGeometry(2, 2, 0.5, 6);
+            geometry.rotateX(Math.PI / 2);
+            const material = new THREE.MeshBasicMaterial({ color: color, transparent: true, opacity: 0.8 });
+            const mesh = new THREE.Mesh(geometry, material);
+            return mesh;
+        };
+
         // Initialize Globe
         const world = Globe()
             (globeContainer)
-            .globeImageUrl('https://unpkg.com/three-globe/example/img/earth-dark.jpg')
+            .globeImageUrl('https://unpkg.com/three-globe/example/img/earth-dark.jpg') // Dark theme earth
             .bumpImageUrl('https://unpkg.com/three-globe/example/img/earth-topology.png')
             .backgroundColor('rgba(0,0,0,0)') // Transparent to show glass panel behind
-            .pointsData(pointsData)
-            .pointColor(() => '#8bc34a')
-            .pointAltitude(0.05)
-            .pointRadius(0.5)
+            // Labels
+            .labelsData(pointsData)
+            .labelLat(d => d.lat)
+            .labelLng(d => d.lng)
+            .labelText(d => d.name)
+            .labelSize(d => d.type === 'origin' ? 2 : 1.5)
+            .labelDotRadius(0.5)
+            .labelColor(() => '#00ff00')
+            .labelResolution(2)
+            // Custom point (Hexagon for France)
+            .customLayerData([france])
+            .customThreeObject(d => createHexagonMarker(d.color))
+            .customThreeObjectUpdate((obj, d) => {
+                Object.assign(obj.position, world.getCoords(d.lat, d.lng, 0.1));
+            })
+            // Arcs (Neon green data flow)
             .arcsData(arcsData)
             .arcColor('color')
             .arcDashLength(0.4)
-            .arcDashGap(4)
+            .arcDashGap(1)
             .arcDashInitialGap(() => Math.random() * 5)
             .arcDashAnimateTime(2000)
-            .arcStroke(0.5);
+            .arcStroke(1);
 
         // Configure controls
         world.controls().autoRotate = true;
