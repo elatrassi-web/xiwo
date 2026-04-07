@@ -2,17 +2,15 @@
 
 <main class="xiwo-main-content">
 
-    <!-- Hero Slider Section -->
+    <!-- Hero Slider Section (2 Modules Layout) -->
     <section class="xiwo-hero-slider-section">
         <div class="swiper xiwo-hero-swiper">
             <div class="swiper-wrapper">
-                <!-- Slide 1 (Based on Mockup) -->
+                <!-- Slide 1: France & Caraïbe + Network Particles -->
                 <div class="swiper-slide">
-                    <div class="hero-slide-inner">
-                        <div class="hero-bg-image" style="background-image: url('<?php echo get_template_directory_uri(); ?>/assets/images/hero-bg.jpg');"></div>
-                        <div class="hero-overlay"></div>
-
-                        <div class="hero-content">
+                    <div class="hero-slide-inner two-modules">
+                        <!-- Left Module: Content -->
+                        <div class="hero-module-left">
                             <div class="hero-badge">
                                 <span class="badge-dot"></span> RÉSEAU HAUT DÉBIT ULTRA-PERFORMANT
                             </div>
@@ -49,23 +47,30 @@
                             <div class="hero-actions">
                                 <a href="#eligibility" class="btn-glowing">
                                     <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
-                                    Tester mon éligibilité dans ma zone
+                                    Tester mon éligibilité
                                 </a>
                                 <a href="#reseau" class="btn-text">Découvrir le réseau</a>
+                            </div>
+                        </div>
+
+                        <!-- Right Module: AI/Network Animation -->
+                        <div class="hero-module-right">
+                            <div class="network-container glass-panel">
+                                <!-- Particle container for Slide 1 -->
+                                <div id="tsparticles-network" class="particle-canvas-container"></div>
+                                <div class="module-overlay-glow"></div>
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <!-- Slide 2 (Example secondary slide) -->
+                <!-- Slide 2: Fibre Speed + Electrons Animation -->
                 <div class="swiper-slide">
-                    <div class="hero-slide-inner">
-                        <div class="hero-bg-image" style="background-image: url('<?php echo get_template_directory_uri(); ?>/assets/images/hero-bg.jpg'); filter: hue-rotate(45deg);"></div>
-                        <div class="hero-overlay"></div>
-
-                        <div class="hero-content">
+                    <div class="hero-slide-inner two-modules">
+                        <!-- Left Module: Content -->
+                        <div class="hero-module-left">
                             <div class="hero-badge">
-                                <span class="badge-dot"></span> FIBRE OPTIQUE
+                                <span class="badge-dot" style="background:var(--wp--preset--color--primary)"></span> FIBRE OPTIQUE
                             </div>
 
                             <h1 class="hero-title">
@@ -76,14 +81,35 @@
 
                             <p class="hero-desc">
                                 Profitez d'une connexion ultra-rapide jusqu'à 5 Gbit/s.<br>
-                                Streaming, gaming, télétravail : ne choisissez plus,<br>
-                                faites tout en même temps.
+                                Intelligence artificielle et routage dynamique pour une<br>
+                                latence minimale.
                             </p>
+
+                            <div class="hero-stats">
+                                <div class="stat-item">
+                                    <div class="stat-number">5 Gb/s</div>
+                                    <div class="stat-label">débit max</div>
+                                </div>
+                                <div class="stat-divider"></div>
+                                <div class="stat-item">
+                                    <div class="stat-number">< 5ms</div>
+                                    <div class="stat-label">latence</div>
+                                </div>
+                            </div>
 
                             <div class="hero-actions">
                                 <a href="#pricing" class="btn-glowing">
                                     Voir nos offres Box
                                 </a>
+                            </div>
+                        </div>
+
+                        <!-- Right Module: Electron/AI Animation -->
+                        <div class="hero-module-right">
+                            <div class="network-container glass-panel">
+                                <!-- Particle container for Slide 2 -->
+                                <div id="tsparticles-electrons" class="particle-canvas-container"></div>
+                                <div class="module-overlay-glow blue-glow"></div>
                             </div>
                         </div>
                     </div>

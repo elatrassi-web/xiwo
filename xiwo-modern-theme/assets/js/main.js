@@ -206,10 +206,10 @@ document.addEventListener('DOMContentLoaded', () => {
         const heroSwiper = new Swiper('.xiwo-hero-swiper', {
             loop: true,
             autoplay: {
-                delay: 6000,
+                delay: 8000, // Increased delay to allow enjoying the animations
                 disableOnInteraction: false,
             },
-            effect: 'fade', // Use fade effect for a more modern transition
+            effect: 'fade',
             fadeEffect: {
                 crossFade: true
             },
@@ -221,6 +221,94 @@ document.addEventListener('DOMContentLoaded', () => {
                 nextEl: '.swiper-button-next',
                 prevEl: '.swiper-button-prev',
             },
+        });
+    }
+
+    // Initialize tsParticles for "Network/AI" and "Electrons"
+    if (typeof tsParticles !== 'undefined') {
+        // Slide 1: Network / Nodes Map Configuration
+        tsParticles.load({
+            id: "tsparticles-network",
+            options: {
+                fullScreen: { enable: false },
+                background: {
+                    color: { value: "transparent" }
+                },
+                fpsLimit: 60,
+                interactivity: {
+                    events: {
+                        onHover: { enable: true, mode: "repulse" },
+                        resize: true
+                    },
+                    modes: {
+                        repulse: { distance: 100, duration: 0.4 }
+                    }
+                },
+                particles: {
+                    color: { value: "#8bc34a" }, // Primary green
+                    links: {
+                        color: "#8bc34a",
+                        distance: 150,
+                        enable: true,
+                        opacity: 0.4,
+                        width: 1
+                    },
+                    move: {
+                        direction: "none",
+                        enable: true,
+                        outModes: { default: "bounce" },
+                        random: false,
+                        speed: 1,
+                        straight: false
+                    },
+                    number: {
+                        density: { enable: true, area: 800 },
+                        value: 80
+                    },
+                    opacity: { value: 0.7 },
+                    shape: { type: "circle" },
+                    size: { value: { min: 1, max: 3 } }
+                },
+                detectRetina: true
+            }
+        });
+
+        // Slide 2: Fast Electrons / Data Flow Configuration
+        tsParticles.load({
+            id: "tsparticles-electrons",
+            options: {
+                fullScreen: { enable: false },
+                background: {
+                    color: { value: "transparent" }
+                },
+                fpsLimit: 60,
+                particles: {
+                    color: { value: ["#2196f3", "#4caf50", "#ffffff"] }, // Blue, green, white
+                    move: {
+                        direction: "right",
+                        enable: true,
+                        outModes: { default: "out" },
+                        random: false,
+                        speed: 8, // Fast moving
+                        straight: true
+                    },
+                    number: {
+                        density: { enable: true, area: 800 },
+                        value: 120
+                    },
+                    opacity: {
+                        value: { min: 0.1, max: 0.8 },
+                        animation: {
+                            enable: true,
+                            speed: 1,
+                            sync: false
+                        }
+                    },
+                    shape: { type: "line" },
+                    size: { value: { min: 1, max: 4 } }
+                },
+                detectRetina: true
+            }
         });
     }
 });

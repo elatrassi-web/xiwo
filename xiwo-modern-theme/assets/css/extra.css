@@ -141,61 +141,97 @@
 }
 
 
-/* Hero Slider Section */
+/* HERO SLIDER (2 MODULES) */
 .xiwo-hero-slider-section {
-    width: 100%;
     position: relative;
-    background-color: #000;
+    width: 100%;
+    height: 90vh;
+    min-height: 700px;
+    background: #050505;
+    overflow: hidden;
+    background-image:
+        linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+    background-size: 50px 50px;
 }
 
 .xiwo-hero-swiper {
     width: 100%;
-    height: 90vh; /* Make it almost full screen */
-    min-height: 600px;
+    height: 100%;
 }
 
-.hero-slide-inner {
+.hero-slide-inner.two-modules {
+    position: relative;
     width: 100%;
     height: 100%;
-    position: relative;
     display: flex;
     align-items: center;
+    justify-content: space-between;
+    padding: 0 5%;
+    max-width: 1400px;
+    margin: 0 auto;
+    z-index: 3;
+    gap: 2rem;
+}
+
+/* LEFT MODULE: Text Content */
+.hero-module-left {
+    flex: 1;
+    max-width: 600px;
+    color: #fff;
+    z-index: 4;
+}
+
+/* RIGHT MODULE: Animations */
+.hero-module-right {
+    flex: 1;
+    max-width: 600px;
+    height: 70%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    z-index: 4;
+}
+
+/* Glass panel for the visual animation container */
+.glass-panel {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    min-height: 400px;
+    background: rgba(15, 20, 25, 0.4);
+    border: 1px solid rgba(139, 195, 74, 0.2);
+    border-radius: 24px;
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.5), inset 0 0 30px rgba(139, 195, 74, 0.05);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
     overflow: hidden;
 }
 
-.hero-bg-image {
+.particle-canvas-container {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background-size: cover;
-    background-position: center right;
-    background-repeat: no-repeat;
     z-index: 1;
 }
 
-.hero-overlay {
+.module-overlay-glow {
     position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(90deg, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.6) 40%, rgba(0,0,0,0) 100%);
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 80%;
+    height: 80%;
+    background: radial-gradient(circle, rgba(139,195,74,0.15) 0%, rgba(0,0,0,0) 70%);
     z-index: 2;
+    pointer-events: none;
 }
 
-.hero-content {
-    position: relative;
-    z-index: 3;
-    max-width: 1200px;
-    width: 100%;
-    margin: 0 auto;
-    padding: 0 2rem;
-    color: #fff;
-    /* Adjust width to not overlap the globe heavily */
-    width: 55%;
-    margin-left: 10%;
+.module-overlay-glow.blue-glow {
+    background: radial-gradient(circle, rgba(33,150,243,0.15) 0%, rgba(0,0,0,0) 70%);
+    border-color: rgba(33, 150, 243, 0.2);
 }
 
 .hero-badge {
@@ -328,68 +364,75 @@
     background: var(--color-primary) !important;
 }
 
+/* Animations for the content */
+.swiper-slide-active .hero-module-left {
+    animation: slideInLeft 0.8s ease forwards;
+}
+
+.swiper-slide-active .hero-module-right {
+    animation: slideInRight 0.8s ease 0.2s forwards;
+}
+
+@keyframes slideInLeft {
+    from { opacity: 0; transform: translateX(-30px); }
+    to { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes slideInRight {
+    from { opacity: 0; transform: translateX(30px); }
+    to { opacity: 1; transform: translateX(0); }
+}
+
 /* Responsive adjustments */
 @media (max-width: 992px) {
     .hero-title {
         font-size: 2.8rem;
     }
-    .hero-content {
-        width: 80%;
-        margin-left: 5%;
+    .hero-slide-inner.two-modules {
+        flex-direction: column;
+        justify-content: center;
+        gap: 3rem;
+        padding-top: 6rem;
+    }
+    .hero-module-left, .hero-module-right {
+        max-width: 100%;
+        text-align: center;
+    }
+    .hero-module-right {
+        height: 300px;
+        width: 100%;
+    }
+    .hero-badge {
+        margin: 0 auto 1.5rem auto;
+    }
+    .hero-desc {
+        margin: 0 auto 2rem auto;
+    }
+    .hero-stats {
+        justify-content: center;
+    }
+    .hero-actions {
+        justify-content: center;
     }
 }
 
 @media (max-width: 768px) {
     .xiwo-hero-swiper {
         height: auto;
-        min-height: 80vh;
-    }
-
-    .hero-slide-inner {
-        flex-direction: column;
-        justify-content: flex-end;
-        padding-bottom: 4rem;
-    }
-
-    .hero-bg-image {
-        background-position: center top;
-        background-size: cover;
-        /* Increase height of image on mobile slightly to show the globe */
-        height: 60%;
-    }
-
-    .hero-overlay {
-        background: linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(0,0,0,0.8) 40%, rgba(0,0,0,1) 100%);
-    }
-
-    .hero-content {
-        width: 100%;
-        margin-left: 0;
-        padding: 0 1.5rem;
-        text-align: center;
-        padding-top: 15rem; /* Push content down below globe */
-    }
-
-    .hero-badge {
-        margin: 0 auto 1.5rem auto;
+        min-height: 85vh;
     }
 
     .hero-title {
         font-size: 2.2rem;
     }
 
-    .hero-desc {
-        margin: 0 auto 2rem auto;
-    }
-
     .hero-stats {
-        justify-content: center;
         flex-wrap: wrap;
         gap: 1.5rem;
     }
 
     .stat-divider {
-        display: none; /* Hide dividers on mobile for better wrapping */
+        display: none;
     }
 
     .hero-actions {
@@ -400,5 +443,9 @@
     .btn-glowing {
         width: 100%;
         justify-content: center;
+    }
+
+    .hero-module-right {
+        height: 250px;
     }
 }
