@@ -2,127 +2,55 @@
 
 <main class="xiwo-main-content">
 
-    <!-- Hero Slider Section (2 Modules Layout) -->
+    <!-- Hero Section (Background Globe Layout) -->
     <section class="xiwo-hero-slider-section">
-        <div class="swiper xiwo-hero-swiper">
-            <div class="swiper-wrapper">
-                <!-- Slide 1: France & Caraïbe + Network Particles -->
-                <div class="swiper-slide">
-                    <div class="hero-slide-inner two-modules">
-                        <!-- Left Module: Content -->
-                        <div class="hero-module-left">
-                            <div class="hero-badge">
-                                <span class="badge-dot"></span> RÉSEAU HAUT DÉBIT ULTRA-PERFORMANT
-                            </div>
+        <!-- Interactive 3D Globe Background -->
+        <div id="globe-container" class="hero-globe-background"></div>
 
-                            <h1 class="hero-title">
-                                XIWO, un réseau<br>
-                                présent en<br>
-                                <span class="text-primary">France & Caraïbe</span>
-                            </h1>
+        <div class="hero-slide-inner">
+            <!-- Left Module: Content -->
+            <div class="hero-module-left">
+                <div class="hero-badge">
+                    <span class="badge-dot"></span> RÉSEAU HAUT DÉBIT ULTRA-PERFORMANT
+                </div>
 
-                            <p class="hero-desc">
-                                XIWO connecte les territoires là où les autres s'arrêtent.<br>
-                                Fibre et solutions sans fil déployées avec exigence<br>
-                                pour les particuliers et les professionnels.
-                            </p>
+                <h1 class="hero-title">
+                    XIWO, un réseau<br>
+                    présent en<br>
+                    <span class="text-primary">France & Caraïbe</span>
+                </h1>
 
-                            <div class="hero-stats">
-                                <div class="stat-item">
-                                    <div class="stat-number">5</div>
-                                    <div class="stat-label">territoires</div>
-                                </div>
-                                <div class="stat-divider"></div>
-                                <div class="stat-item">
-                                    <div class="stat-number">+100 000</div>
-                                    <div class="stat-label">clients connectés</div>
-                                </div>
-                                <div class="stat-divider"></div>
-                                <div class="stat-item">
-                                    <div class="stat-number">1</div>
-                                    <div class="stat-label">ambition</div>
-                                </div>
-                            </div>
+                <p class="hero-desc">
+                    XIWO connecte les territoires là où les autres s'arrêtent.<br>
+                    Fibre et solutions sans fil déployées avec exigence<br>
+                    pour les particuliers et les professionnels.
+                </p>
 
-                            <div class="hero-actions">
-                                <a href="#eligibility" class="btn-glowing">
-                                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
-                                    Tester mon éligibilité
-                                </a>
-                                <a href="#reseau" class="btn-text">Découvrir le réseau</a>
-                            </div>
-                        </div>
-
-                        <!-- Right Module: Interactive 3D Globe -->
-                        <div class="hero-module-right">
-                            <div class="network-container glass-panel" style="padding: 0; background: rgba(5, 8, 12, 0.6); border: 1px solid rgba(139, 195, 74, 0.4); box-shadow: 0 0 40px rgba(139,195,74,0.15);">
-                                <!-- Globe Container for Slide 1 -->
-                                <div id="globe-container" style="width: 100%; height: 100%; cursor: grab;"></div>
-                                <!-- Subtle overlay so the globe doesn't look completely disconnected -->
-                                <div class="module-overlay-glow" style="pointer-events: none;"></div>
-                            </div>
-                        </div>
+                <div class="hero-stats">
+                    <div class="stat-item">
+                        <div class="stat-number">5</div>
+                        <div class="stat-label">territoires</div>
+                    </div>
+                    <div class="stat-divider"></div>
+                    <div class="stat-item">
+                        <div class="stat-number">+100 000</div>
+                        <div class="stat-label">clients connectés</div>
+                    </div>
+                    <div class="stat-divider"></div>
+                    <div class="stat-item">
+                        <div class="stat-number">1</div>
+                        <div class="stat-label">ambition</div>
                     </div>
                 </div>
 
-                <!-- Slide 2: Fibre Speed + Neural Network Animation -->
-                <div class="swiper-slide">
-                    <div class="hero-slide-inner two-modules">
-                        <!-- Left Module: Content -->
-                        <div class="hero-module-left">
-                            <div class="hero-badge">
-                                <span class="badge-dot" style="background:var(--wp--preset--color--primary)"></span> FIBRE OPTIQUE & IA
-                            </div>
-
-                            <h1 class="hero-title">
-                                L'intelligence<br>
-                                au service de<br>
-                                <span class="text-primary">votre réseau.</span>
-                            </h1>
-
-                            <p class="hero-desc">
-                                Profitez d'une connexion ultra-rapide jusqu'à 5 Gbit/s.<br>
-                                Routage intelligent et prédictif pour une<br>
-                                latence minimale absolue.
-                            </p>
-
-                            <div class="hero-stats">
-                                <div class="stat-item">
-                                    <div class="stat-number">5 Gb/s</div>
-                                    <div class="stat-label">débit max</div>
-                                </div>
-                                <div class="stat-divider"></div>
-                                <div class="stat-item">
-                                    <div class="stat-number">< 5ms</div>
-                                    <div class="stat-label">latence</div>
-                                </div>
-                            </div>
-
-                            <div class="hero-actions">
-                                <a href="#pricing" class="btn-glowing">
-                                    Voir nos offres Box
-                                </a>
-                            </div>
-                        </div>
-
-                        <!-- Right Module: 3D Neural/Vanta Animation -->
-                        <div class="hero-module-right">
-                            <div class="network-container glass-panel" style="padding: 0; background: rgba(5, 8, 12, 0.8); border: 1px solid rgba(33, 150, 243, 0.4); box-shadow: 0 0 40px rgba(33,150,243,0.15);">
-                                <!-- Vanta Container for Slide 2 -->
-                                <div id="ai-network-container" style="width: 100%; height: 100%;"></div>
-                                <div class="module-overlay-glow blue-glow" style="pointer-events: none;"></div>
-                            </div>
-                        </div>
-                    </div>
+                <div class="hero-actions">
+                    <a href="#eligibility" class="btn-glowing">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
+                        Tester mon éligibilité
+                    </a>
+                    <a href="#reseau" class="btn-text">Découvrir le réseau</a>
                 </div>
             </div>
-
-            <!-- Swiper Pagination -->
-            <div class="swiper-pagination"></div>
-
-            <!-- Swiper Navigation -->
-            <div class="swiper-button-prev"></div>
-            <div class="swiper-button-next"></div>
         </div>
     </section>
 
@@ -396,7 +324,6 @@
             </div>
         </div>
     </section>
-            </div>
 
 
 </main>

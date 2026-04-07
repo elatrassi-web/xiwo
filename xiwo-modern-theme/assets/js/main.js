@@ -145,26 +145,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // --- 3D Neural Network / Vanta.js (Slide 2) ---
-    const vantaContainer = document.getElementById('ai-network-container');
-    if (vantaContainer && typeof VANTA !== 'undefined') {
-        VANTA.NET({
-            el: vantaContainer,
-            mouseControls: true,
-            touchControls: true,
-            gyroControls: false,
-            minHeight: 200.00,
-            minWidth: 200.00,
-            scale: 1.00,
-            scaleMobile: 1.00,
-            color: 0x2196f3, // Primary blue
-            backgroundColor: 0x05080c, // Dark background
-            points: 15.00,
-            maxDistance: 25.00,
-            spacing: 18.00,
-            showDots: true
-        });
-    }
 });
 
 // Dynamic Regional Pricing Logic
@@ -222,30 +202,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 document.addEventListener('DOMContentLoaded', () => {
-    // Initialize Hero Swiper
-    if (typeof Swiper !== 'undefined') {
-        const heroSwiper = new Swiper('.xiwo-hero-swiper', {
-            loop: true,
-            autoplay: {
-                delay: 8000, // Increased delay to allow enjoying the animations
-                disableOnInteraction: false,
-            },
-            effect: 'fade',
-            fadeEffect: {
-                crossFade: true
-            },
-            pagination: {
-                el: '.swiper-pagination',
-                clickable: true,
-            },
-            navigation: {
-                nextEl: '.swiper-button-next',
-                prevEl: '.swiper-button-prev',
-            },
-        });
-    }
-
-    // --- 3D Globe Initialization (Slide 1) ---
+    // --- 3D Globe Initialization ---
     const globeContainer = document.getElementById('globe-container');
     if (globeContainer && typeof Globe !== 'undefined') {
         // Define coordinates
@@ -308,12 +265,11 @@ document.addEventListener('DOMContentLoaded', () => {
             .arcStroke(1);
 
         // Configure controls
-        world.controls().autoRotate = true;
-        world.controls().autoRotateSpeed = 1.5;
+        world.controls().autoRotate = false; // Disable auto rotate so it doesn't spin wildly without interaction
         world.controls().enableZoom = false; // Disable scroll zoom so it doesn't trap the user
 
-        // Initial point of view (looking at Atlantic)
-        world.pointOfView({ lat: 25, lng: -30, altitude: 2 });
+        // Initial point of view (looking at Atlantic to frame France and Caraibes)
+        world.pointOfView({ lat: 25, lng: -40, altitude: 2 });
 
         // Resize handling
         window.addEventListener('resize', () => {

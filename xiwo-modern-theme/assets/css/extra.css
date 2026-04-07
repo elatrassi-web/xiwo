@@ -141,7 +141,7 @@
 }
 
 
-/* HERO SLIDER (2 MODULES) */
+/* HERO SLIDER (Background Globe Layout) */
 .xiwo-hero-slider-section {
     position: relative;
     width: 100%;
@@ -155,68 +155,22 @@
     background-size: 50px 50px;
 }
 
-.xiwo-hero-swiper {
-    width: 100%;
+.hero-globe-background {
+    position: absolute;
+    top: 0;
+    right: -10%; /* Shift it to the right */
+    width: 70%;
     height: 100%;
+    z-index: 1; /* Behind text */
+    cursor: grab;
 }
 
-.hero-slide-inner.two-modules {
-    position: relative;
-    width: 100%;
-    height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 0 5%;
-    max-width: 1400px;
-    margin: 0 auto;
-    z-index: 3;
-    gap: 2rem;
-}
-
-/* LEFT MODULE: Text Content */
-.hero-module-left {
-    flex: 1;
-    max-width: 600px;
-    color: #fff;
-    z-index: 4;
-}
-
-/* RIGHT MODULE: Animations */
-.hero-module-right {
-    flex: 1;
-    max-width: 600px;
-    height: 70%;
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-    z-index: 4;
-}
-
-/* Glass panel for the visual animation container */
-.glass-panel {
-    position: relative;
-    width: 100%;
-    height: 100%;
-    min-height: 400px;
-    background: rgba(15, 20, 25, 0.4);
-    border: 1px solid rgba(139, 195, 74, 0.2);
-    border-radius: 24px;
-    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.5), inset 0 0 30px rgba(139, 195, 74, 0.05);
-    backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
-    overflow: hidden;
-}
-
-/* Specific styling for the 3D canvases to ensure they fill the panel */
-#globe-container canvas,
-#ai-network-container canvas {
-    border-radius: 24px; /* Match the glass panel */
+.hero-globe-background canvas {
     outline: none;
 }
 
 /* Force globe wrapper to absolute fill */
-#globe-container > div {
+.hero-globe-background > div {
     position: absolute !important;
     top: 0;
     left: 0;
@@ -224,20 +178,25 @@
     height: 100% !important;
 }
 
-.module-overlay-glow {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 80%;
-    height: 80%;
-    background: radial-gradient(circle, rgba(139,195,74,0.15) 0%, rgba(0,0,0,0) 70%);
-    z-index: 2;
-    pointer-events: none;
+.hero-slide-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    padding: 0 5%;
+    max-width: 1400px;
+    margin: 0 auto;
+    z-index: 3; /* Above globe */
+    pointer-events: none; /* Let clicks pass through empty space to globe */
 }
 
-.module-overlay-glow.blue-glow {
-    background: radial-gradient(circle, rgba(33,150,243,0.15) 0%, rgba(0,0,0,0) 70%);
+/* LEFT MODULE: Text Content */
+.hero-module-left {
+    flex: 1;
+    max-width: 600px;
+    color: #fff;
+    pointer-events: auto; /* Re-enable clicks for text/buttons */
 }
 
 .hero-badge {
@@ -357,37 +316,13 @@
     border-color: #fff;
 }
 
-/* Swiper Controls Customization */
-.swiper-button-next, .swiper-button-prev {
-    color: rgba(255, 255, 255, 0.5) !important;
-    transition: color 0.3s;
-}
-.swiper-button-next:hover, .swiper-button-prev:hover {
-    color: var(--color-primary) !important;
-}
-.swiper-pagination-bullet {
-    background: rgba(255, 255, 255, 0.5) !important;
-}
-.swiper-pagination-bullet-active {
-    background: var(--color-primary) !important;
-}
-
 /* Animations for the content */
-.swiper-slide-active .hero-module-left {
+.hero-module-left {
     animation: slideInLeft 0.8s ease forwards;
-}
-
-.swiper-slide-active .hero-module-right {
-    animation: slideInRight 0.8s ease 0.2s forwards;
 }
 
 @keyframes slideInLeft {
     from { opacity: 0; transform: translateX(-30px); }
-    to { opacity: 1; transform: translateX(0); }
-}
-
-@keyframes slideInRight {
-    from { opacity: 0; transform: translateX(30px); }
     to { opacity: 1; transform: translateX(0); }
 }
 
@@ -396,19 +331,19 @@
     .hero-title {
         font-size: 2.8rem;
     }
-    .hero-slide-inner.two-modules {
+    .hero-slide-inner {
         flex-direction: column;
         justify-content: center;
-        gap: 3rem;
-        padding-top: 6rem;
-    }
-    .hero-module-left, .hero-module-right {
-        max-width: 100%;
         text-align: center;
     }
-    .hero-module-right {
-        height: 300px;
+    .hero-module-left {
+        max-width: 100%;
+        margin-top: 5rem; /* Push down to overlap globe if needed */
+    }
+    .hero-globe-background {
         width: 100%;
+        right: 0;
+        opacity: 0.5; /* Dim globe on mobile so text is legible */
     }
     .hero-badge {
         margin: 0 auto 1.5rem auto;
@@ -425,9 +360,10 @@
 }
 
 @media (max-width: 768px) {
-    .xiwo-hero-swiper {
+    .xiwo-hero-slider-section {
         height: auto;
         min-height: 85vh;
+        padding: 4rem 0;
     }
 
     .hero-title {
@@ -451,9 +387,5 @@
     .btn-glowing {
         width: 100%;
         justify-content: center;
-    }
-
-    .hero-module-right {
-        height: 250px;
     }
 }
