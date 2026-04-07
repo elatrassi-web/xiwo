@@ -144,6 +144,27 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     }
+
+    // --- 3D Neural Network / Vanta.js (Slide 2) ---
+    const vantaContainer = document.getElementById('ai-network-container');
+    if (vantaContainer && typeof VANTA !== 'undefined') {
+        VANTA.NET({
+            el: vantaContainer,
+            mouseControls: true,
+            touchControls: true,
+            gyroControls: false,
+            minHeight: 200.00,
+            minWidth: 200.00,
+            scale: 1.00,
+            scaleMobile: 1.00,
+            color: 0x2196f3, // Primary blue
+            backgroundColor: 0x05080c, // Dark background
+            points: 15.00,
+            maxDistance: 25.00,
+            spacing: 18.00,
+            showDots: true
+        });
+    }
 });
 
 // Dynamic Regional Pricing Logic
@@ -224,90 +245,60 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Initialize tsParticles for "Network/AI" and "Electrons"
-    if (typeof tsParticles !== 'undefined') {
-        // Slide 1: Network / Nodes Map Configuration
-        tsParticles.load({
-            id: "tsparticles-network",
-            options: {
-                fullScreen: { enable: false },
-                background: {
-                    color: { value: "transparent" }
-                },
-                fpsLimit: 60,
-                interactivity: {
-                    events: {
-                        onHover: { enable: true, mode: "repulse" },
-                        resize: true
-                    },
-                    modes: {
-                        repulse: { distance: 100, duration: 0.4 }
-                    }
-                },
-                particles: {
-                    color: { value: "#8bc34a" }, // Primary green
-                    links: {
-                        color: "#8bc34a",
-                        distance: 150,
-                        enable: true,
-                        opacity: 0.4,
-                        width: 1
-                    },
-                    move: {
-                        direction: "none",
-                        enable: true,
-                        outModes: { default: "bounce" },
-                        random: false,
-                        speed: 1,
-                        straight: false
-                    },
-                    number: {
-                        density: { enable: true, area: 800 },
-                        value: 80
-                    },
-                    opacity: { value: 0.7 },
-                    shape: { type: "circle" },
-                    size: { value: { min: 1, max: 3 } }
-                },
-                detectRetina: true
-            }
-        });
+    // --- 3D Globe Initialization (Slide 1) ---
+    const globeContainer = document.getElementById('globe-container');
+    if (globeContainer && typeof Globe !== 'undefined') {
+        // Define coordinates
+        const france = { lat: 46.2276, lng: 2.2137, name: 'France' };
+        const territories = [
+            { lat: 16.2650, lng: -61.5510, name: 'Guadeloupe' },
+            { lat: 14.6415, lng: -61.0242, name: 'Martinique' },
+            { lat: 3.9339, lng: -53.1258, name: 'Guyane' },
+            { lat: -21.1151, lng: 55.5364, name: 'La Réunion' },
+            { lat: 18.0708, lng: -63.0501, name: 'Saint-Martin' }
+        ];
 
-        // Slide 2: Fast Electrons / Data Flow Configuration
-        tsParticles.load({
-            id: "tsparticles-electrons",
-            options: {
-                fullScreen: { enable: false },
-                background: {
-                    color: { value: "transparent" }
-                },
-                fpsLimit: 60,
-                particles: {
-                    color: { value: ["#2196f3", "#4caf50", "#ffffff"] }, // Blue, green, white
-                    move: {
-                        direction: "right",
-                        enable: true,
-                        outModes: { default: "out" },
-                        random: false,
-                        speed: 8, // Fast moving
-                        straight: true
-                    },
-                    number: {
-                        density: { enable: true, area: 800 },
-                        value: 120
-                    },
-                    opacity: {
-                        value: { min: 0.1, max: 0.8 },
-                        animation: {
-                            enable: true,
-                            speed: 1,
-                            sync: false
-                        }
-                    },
-                    shape: { type: "line" },
-                    size: { value: { min: 1, max: 4 } }
-                },
-                detectRetina: true
+        const arcsData = territories.map(t => ({
+            startLat: france.lat,
+            startLng: france.lng,
+            endLat: t.lat,
+            endLng: t.lng,
+            color: ['rgba(255, 255, 255, 0.2)', '#8bc34a']
+        }));
+
+        const pointsData = [france, ...territories];
+
+        // Initialize Globe
+        const world = Globe()
+            (globeContainer)
+            .globeImageUrl('https://unpkg.com/three-globe/example/img/earth-dark.jpg')
+            .bumpImageUrl('https://unpkg.com/three-globe/example/img/earth-topology.png')
+            .backgroundColor('rgba(0,0,0,0)') // Transparent to show glass panel behind
+            .pointsData(pointsData)
+            .pointColor(() => '#8bc34a')
+            .pointAltitude(0.05)
+            .pointRadius(0.5)
+            .arcsData(arcsData)
+            .arcColor('color')
+            .arcDashLength(0.4)
+            .arcDashGap(4)
+            .arcDashInitialGap(() => Math.random() * 5)
+            .arcDashAnimateTime(2000)
+            .arcStroke(0.5);
+
+        // Configure controls
+        world.controls().autoRotate = true;
+        world.controls().autoRotateSpeed = 1.5;
+        world.controls().enableZoom = false; // Disable scroll zoom so it doesn't trap the user
+
+        // Initial point of view (looking at Atlantic)
+        world.pointOfView({ lat: 25, lng: -30, altitude: 2 });
+
+        // Resize handling
+        window.addEventListener('resize', () => {
+            if(globeContainer) {
+                world.width(globeContainer.clientWidth);
+                world.height(globeContainer.clientHeight);
             }
         });
     }

@@ -53,36 +53,37 @@
                             </div>
                         </div>
 
-                        <!-- Right Module: AI/Network Animation -->
+                        <!-- Right Module: Interactive 3D Globe -->
                         <div class="hero-module-right">
-                            <div class="network-container glass-panel">
-                                <!-- Particle container for Slide 1 -->
-                                <div id="tsparticles-network" class="particle-canvas-container"></div>
-                                <div class="module-overlay-glow"></div>
+                            <div class="network-container glass-panel" style="padding: 0; background: rgba(5, 8, 12, 0.6); border: 1px solid rgba(139, 195, 74, 0.4); box-shadow: 0 0 40px rgba(139,195,74,0.15);">
+                                <!-- Globe Container for Slide 1 -->
+                                <div id="globe-container" style="width: 100%; height: 100%; cursor: grab;"></div>
+                                <!-- Subtle overlay so the globe doesn't look completely disconnected -->
+                                <div class="module-overlay-glow" style="pointer-events: none;"></div>
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <!-- Slide 2: Fibre Speed + Electrons Animation -->
+                <!-- Slide 2: Fibre Speed + Neural Network Animation -->
                 <div class="swiper-slide">
                     <div class="hero-slide-inner two-modules">
                         <!-- Left Module: Content -->
                         <div class="hero-module-left">
                             <div class="hero-badge">
-                                <span class="badge-dot" style="background:var(--wp--preset--color--primary)"></span> FIBRE OPTIQUE
+                                <span class="badge-dot" style="background:var(--wp--preset--color--primary)"></span> FIBRE OPTIQUE & IA
                             </div>
 
                             <h1 class="hero-title">
-                                La vitesse<br>
-                                sans compromis<br>
-                                <span class="text-primary">pour tous.</span>
+                                L'intelligence<br>
+                                au service de<br>
+                                <span class="text-primary">votre réseau.</span>
                             </h1>
 
                             <p class="hero-desc">
                                 Profitez d'une connexion ultra-rapide jusqu'à 5 Gbit/s.<br>
-                                Intelligence artificielle et routage dynamique pour une<br>
-                                latence minimale.
+                                Routage intelligent et prédictif pour une<br>
+                                latence minimale absolue.
                             </p>
 
                             <div class="hero-stats">
@@ -104,12 +105,12 @@
                             </div>
                         </div>
 
-                        <!-- Right Module: Electron/AI Animation -->
+                        <!-- Right Module: 3D Neural/Vanta Animation -->
                         <div class="hero-module-right">
-                            <div class="network-container glass-panel">
-                                <!-- Particle container for Slide 2 -->
-                                <div id="tsparticles-electrons" class="particle-canvas-container"></div>
-                                <div class="module-overlay-glow blue-glow"></div>
+                            <div class="network-container glass-panel" style="padding: 0; background: rgba(5, 8, 12, 0.8); border: 1px solid rgba(33, 150, 243, 0.4); box-shadow: 0 0 40px rgba(33,150,243,0.15);">
+                                <!-- Vanta Container for Slide 2 -->
+                                <div id="ai-network-container" style="width: 100%; height: 100%;"></div>
+                                <div class="module-overlay-glow blue-glow" style="pointer-events: none;"></div>
                             </div>
                         </div>
                     </div>
