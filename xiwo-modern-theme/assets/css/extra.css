@@ -158,11 +158,12 @@
 .hero-globe-background {
     position: absolute;
     top: 0;
-    right: -10%; /* Shift it to the right */
-    width: 70%;
+    left: 0;
+    width: 100%;
     height: 100%;
     z-index: 1; /* Behind text */
     cursor: grab;
+    opacity: 0.8; /* Dim slightly so center text is more readable */
 }
 
 .hero-globe-background canvas {
@@ -183,20 +184,25 @@
     width: 100%;
     height: 100%;
     display: flex;
+    flex-direction: column;
+    justify-content: center;
     align-items: center;
     padding: 0 5%;
     max-width: 1400px;
     margin: 0 auto;
     z-index: 3; /* Above globe */
     pointer-events: none; /* Let clicks pass through empty space to globe */
+    text-align: center;
 }
 
-/* LEFT MODULE: Text Content */
+/* MODULE: Text Content */
 .hero-module-left {
-    flex: 1;
-    max-width: 600px;
+    max-width: 800px;
     color: #fff;
     pointer-events: auto; /* Re-enable clicks for text/buttons */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .hero-badge {
@@ -242,12 +248,13 @@
     line-height: 1.5;
     color: rgba(255, 255, 255, 0.8);
     margin-bottom: 3rem;
-    max-width: 500px;
+    max-width: 600px;
 }
 
 .hero-stats {
     display: flex;
     align-items: center;
+    justify-content: center;
     gap: 2rem;
     margin-bottom: 3rem;
 }
@@ -278,6 +285,7 @@
 .hero-actions {
     display: flex;
     align-items: center;
+    justify-content: center;
     gap: 2rem;
 }
 
