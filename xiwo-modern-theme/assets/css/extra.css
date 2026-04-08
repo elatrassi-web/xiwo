@@ -184,25 +184,20 @@
     width: 100%;
     height: 100%;
     display: flex;
-    flex-direction: column;
-    justify-content: center;
     align-items: center;
     padding: 0 5%;
     max-width: 1400px;
     margin: 0 auto;
     z-index: 3; /* Above globe */
     pointer-events: none; /* Let clicks pass through empty space to globe */
-    text-align: center;
 }
 
 /* MODULE: Text Content */
 .hero-module-left {
-    max-width: 800px;
+    flex: 1;
+    max-width: 600px;
     color: #fff;
     pointer-events: auto; /* Re-enable clicks for text/buttons */
-    display: flex;
-    flex-direction: column;
-    align-items: center;
 }
 
 .hero-badge {
@@ -248,19 +243,18 @@
     line-height: 1.5;
     color: rgba(255, 255, 255, 0.8);
     margin-bottom: 3rem;
-    max-width: 600px;
+    max-width: 500px;
 }
 
 .hero-stats {
     display: flex;
     align-items: center;
-    justify-content: center;
     gap: 2rem;
     margin-bottom: 3rem;
 }
 
 .stat-item {
-    text-align: center;
+    text-align: left;
 }
 
 .stat-number {
@@ -285,7 +279,6 @@
 .hero-actions {
     display: flex;
     align-items: center;
-    justify-content: center;
     gap: 2rem;
 }
 
@@ -342,11 +335,12 @@
     .hero-slide-inner {
         flex-direction: column;
         justify-content: center;
-        text-align: center;
+        align-items: flex-start;
+        text-align: left;
     }
     .hero-module-left {
         max-width: 100%;
-        margin-top: 5rem; /* Push down to overlap globe if needed */
+        margin-top: 10rem; /* Push down to overlap globe if needed, increased for mobile header */
     }
     .hero-globe-background {
         width: 100%;
@@ -354,16 +348,16 @@
         opacity: 0.5; /* Dim globe on mobile so text is legible */
     }
     .hero-badge {
-        margin: 0 auto 1.5rem auto;
+        margin: 0 0 1.5rem 0;
     }
     .hero-desc {
-        margin: 0 auto 2rem auto;
+        margin: 0 0 2rem 0;
     }
     .hero-stats {
-        justify-content: center;
+        justify-content: flex-start;
     }
     .hero-actions {
-        justify-content: center;
+        justify-content: flex-start;
     }
 }
 
